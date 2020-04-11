@@ -4,7 +4,6 @@ using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFRepositories;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices;
 
 namespace AutoDetailsFirmaDAL.Repositories.EFRepositories
 {
