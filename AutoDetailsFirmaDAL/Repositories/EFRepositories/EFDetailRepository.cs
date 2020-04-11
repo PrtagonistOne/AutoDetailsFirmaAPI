@@ -11,12 +11,33 @@ using System.Threading.Tasks;
 
 namespace AutoDetailsFirmaDAL.Repositories.EFRepositories
 {
-    public class IGenericRepository : GenericRepository<Detail, int>, IEFDetailRepository
+    public class EFDetailRepository : GenericRepository<Detail, int>, IEFDetailRepository
     {
         private readonly AutoDetailContext _context;
-        public GenericRepository(AutoDetailContext context)
+        public EFDetailRepository(AutoDetailContext context) : base(context)
         {
-            _context = context;
+        }
+        public async Task<IEnumerable<Detail>> GetAllDetails()
+        {
+            return await _context.Set<Detail>().ToListAsync();
+        }
+        public async Task<Detail> GetAllDetailsById(int id)
+        {
+            return await _context.Set<Detail>().FindAsync(id);
+        }
+        public async Task AddDetails(Detail entity)
+        {
+            await _context.AddAsync<Detail>(entity);
+        }
+        public async Task UpdateDetails(Detail entity)
+        {
+            _context.Entry(entity).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
+        public async Task DeleteDetails(Detail entity)
+        {
+            _context.Entry(entity).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
         }
     }
 }
