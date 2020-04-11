@@ -9,7 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\EFInterfaces\IEFServices\" />
     <Folder Include="Repositories\" />
     <Folder Include="UnitOfWork\" />
   </ItemGroup>
