@@ -2,17 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices
 {
     public interface IEFProvideService
     {
-        long AddProvides(Provide provide);
+        Task AddProvides(Provide provide);
 
-        void UpdateProvides(Provide provide);
+        Task UpdateProvides(Provide provide);
 
-        void DeleteProvides(Provide provide);
-        Provide GetProvides(long Id);
-        IEnumerable<Provide> GetProvides();
+        Task DeleteProvides(Provide provide);
+        Task <Provide> GetProvides(long Id);
+        Task <IEnumerable<Provide>> GetProvides();
     }
 }

@@ -13,18 +13,7 @@ namespace AutoDetailsFirmaAPI.Controllers
     [Route("api/[controller]")]
     public class GroupOfDetailController : Controller
     {
-        AutoDetailContext _autoContext;
-        public GroupOfDetailController(AutoDetailContext autoService)
-        {
-            _autoContext = autoService;
-        }
-        // GET: api/<controller>
-        [HttpGet]
-        public IEnumerable<GroupOfDetail> Get()
-        {
-            return _autoContext.Set<GroupOfDetail>().ToList();
-        }
-
+        
 
     }
 }

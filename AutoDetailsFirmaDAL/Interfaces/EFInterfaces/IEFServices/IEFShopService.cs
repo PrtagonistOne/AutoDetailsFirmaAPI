@@ -2,17 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices
 {
     public interface IEFShopService
     {
-        long AddShops(Shop shop);
+        Task AddShops(Shop shop);
 
-        void UpdateShops(Shop shop);
+        Task UpdateShops(Shop shop);
 
-        void DeleteShops(Shop shop);
-        Shop GetShop(long Id);
-        IEnumerable<Shop> GetAllShops();
+        Task DeleteShops(Shop shop);
+        Task <Shop> GetShop(long Id);
+        Task <IEnumerable<Shop>> GetAllShops();
     }
 }

@@ -2,17 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices
 {
     public interface IEFDetailService
     {
-        long AddDetails(Detail detail);
+        Task AddDetails(Detail detail);
 
-        void UpdateDetails(Detail detail);
+        Task UpdateDetails(Detail detail);
 
-        void DeleteDetails(Detail detail);
-        Detail GetDetailsById(long Id);
-        IEnumerable<Detail> GetAllDetails();
+        Task DeleteDetails(Detail detail);
+        Task <Detail> GetDetailsById(long Id);
+        Task <IEnumerable<Detail>> GetAllDetails();
     }
 }

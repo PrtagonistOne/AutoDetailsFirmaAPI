@@ -1,18 +1,19 @@
 ﻿using AutoDetailsFirmaDAL.Interfaces.EntityInterfaces;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AutoDetailsFirmaDAL.Interfaces
 {
-    public interface IGenericRepository<TEntity, TId> where TEntity : IEntity<TId>
+    public interface IGenericRepository<TEntity, TId> where TEntity : class, IEntity<TId>
     {
-        IEnumerable<TEntity> GetAll();
+        Task <IEnumerable<TEntity>> GetAll();
 
-        TEntity Get(TId Id);
+        Task <TEntity> Get(TId Id);
 
-        long Add(TEntity entity);
+        Task Add(TEntity entity);
 
-        void Update(TEntity entity);
+        Task Update(TEntity entity);
 
-        void Delete(TEntity entity);
+        Task Delete(TEntity entity);
     }
 }
