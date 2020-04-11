@@ -7,8 +7,8 @@ namespace AutoDetailsFirmaDAL.Interfaces
 {
     public interface IEFUnitOfWork
     {
-        IEFUnitOfWork EFDetailRepository { get; }
-        IEFGroupOfDetailRepository EFGroupOfDetail { get; }
+        IEFDetailRepository EFDetailRepository { get; }
+        IEFGroupOfDetailRepository EFGroupOfDetailRepository { get; }
         IEFProvideRepository EFProvideRepository { get; }
         IEFProviderRepository EFProviderRepository { get; }
         IEFShopRepository EFShopRepository { get; }
