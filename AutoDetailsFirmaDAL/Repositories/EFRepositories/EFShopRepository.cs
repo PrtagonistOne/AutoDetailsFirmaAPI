@@ -4,33 +4,34 @@ using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFRepositories;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices;
 
 namespace AutoDetailsFirmaDAL.Repositories.EFRepositories
 {
-    public class EFDetailRepository : GenericRepository<Detail, int>, IEFDetailRepository
+    public class EFShopRepository : GenericRepository<Shop, int>, IEFShopRepository
     {
         private readonly AutoDetailContext _context;
-        public EFDetailRepository(AutoDetailContext context) : base(context)
+        public EFShopRepository(AutoDetailContext context) : base(context)
         {
         }
-        public async Task<IEnumerable<Detail>> GetAllDetails()
+        public async Task<IEnumerable<Shop>> GetAllShops()
         {
-            return await _context.Set<Detail>().ToListAsync();
+            return await _context.Set<Shop>().ToListAsync();
         }
-        public async Task<Detail> GetAllDetailsById(int id)
+        public async Task<Shop> GetAllShopsById(int id)
         {
-            return await _context.Set<Detail>().FindAsync(id);
+            return await _context.Set<Shop>().FindAsync(id);
         }
-        public async Task AddDetails(Detail entity)
+        public async Task AddShops(Shop entity)
         {
-            await _context.AddAsync<Detail>(entity);
+            await _context.AddAsync<Shop>(entity);
         }
-        public async Task UpdateDetails(Detail entity)
+        public async Task UpdateShops(Shop entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
-        public async Task DeleteDetails(Detail entity)
+        public async Task DeleteShops(Shop entity)
         {
             _context.Entry(entity).State = EntityState.Deleted;
             await _context.SaveChangesAsync();

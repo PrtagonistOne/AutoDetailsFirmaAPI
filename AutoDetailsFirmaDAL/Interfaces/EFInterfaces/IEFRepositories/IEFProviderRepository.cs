@@ -6,10 +6,10 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFRepositories
 {
     public interface IEFProviderRepository : IGenericRepository<Provider, int>
     {
-        Task<IEnumerable<Detail>> GetAllProviders();
-        Task<Detail> GetAllProvidersById(int Id);
-        Task AddProviders(Detail entity);
-        Task UpdateProviders(Detail entity);
-        Task DeleteProviders(Detail entity);
+        Task<IEnumerable<Provider>> GetAllProviders();
+        Task<Provider> GetAllProvidersById(int Id);
+        Task AddProviders(Provider entity);
+        Task UpdateProviders(Provider entity);
+        Task DeleteProviders(Provider entity);
     }
 }

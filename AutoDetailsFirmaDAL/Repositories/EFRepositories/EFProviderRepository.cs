@@ -7,30 +7,30 @@ using System.Threading.Tasks;
 
 namespace AutoDetailsFirmaDAL.Repositories.EFRepositories
 {
-    public class EFDetailRepository : GenericRepository<Detail, int>, IEFDetailRepository
+    public class EFProviderRepository : GenericRepository<Provider, int>, IEFProviderRepository
     {
         private readonly AutoDetailContext _context;
-        public EFDetailRepository(AutoDetailContext context) : base(context)
+        public EFProviderRepository(AutoDetailContext context) : base(context)
         {
         }
-        public async Task<IEnumerable<Detail>> GetAllDetails()
+        public async Task<IEnumerable<Provider>> GetAllProviders()
         {
-            return await _context.Set<Detail>().ToListAsync();
+            return await _context.Set<Provider>().ToListAsync();
         }
-        public async Task<Detail> GetAllDetailsById(int id)
+        public async Task<Provider> GetAllProvidersById(int id)
         {
-            return await _context.Set<Detail>().FindAsync(id);
+            return await _context.Set<Provider>().FindAsync(id);
         }
-        public async Task AddDetails(Detail entity)
+        public async Task AddProviders(Provider entity)
         {
-            await _context.AddAsync<Detail>(entity);
+            await _context.AddAsync<Provider>(entity);
         }
-        public async Task UpdateDetails(Detail entity)
+        public async Task UpdateProviders(Provider entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
-        public async Task DeleteDetails(Detail entity)
+        public async Task DeleteProviders(Provider entity)
         {
             _context.Entry(entity).State = EntityState.Deleted;
             await _context.SaveChangesAsync();

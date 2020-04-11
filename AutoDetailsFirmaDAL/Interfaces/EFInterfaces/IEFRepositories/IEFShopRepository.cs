@@ -6,10 +6,10 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFRepositories
 {
     public interface IEFShopRepository : IGenericRepository<Shop, int>
     {
-        Task<IEnumerable<Detail>> GetAllShops();
-        Task<Detail> GetAllShopsById(int Id);
-        Task AddShops(Detail entity);
-        Task UpdateShops(Detail entity);
-        Task DeleteShops(Detail entity);
+        Task<IEnumerable<Shop>> GetAllShops();
+        Task<Shop> GetAllShopsById(int Id);
+        Task AddShops(Shop entity);
+        Task UpdateShops(Shop entity);
+        Task DeleteShops(Shop entity);
     }
 }
