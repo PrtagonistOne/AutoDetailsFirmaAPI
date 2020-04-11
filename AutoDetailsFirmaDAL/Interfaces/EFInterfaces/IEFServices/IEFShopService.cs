@@ -13,7 +13,7 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices
         Task UpdateShops(Shop shop);
 
         Task DeleteShops(Shop shop);
-        Task <Shop> GetShop(long Id);
+        Task <Shop> GetShop(int Id);
         Task <IEnumerable<Shop>> GetAllShops();
     }
 }

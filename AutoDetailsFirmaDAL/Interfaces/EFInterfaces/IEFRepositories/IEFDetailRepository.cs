@@ -1,14 +1,15 @@
 ﻿using AutoDetailsFirmaDAL.Entities;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFRepositories
 {
     public interface IEFDetailRepository : IGenericRepository<Detail, int>
     {
-        IEnumerable<Detail> GetAllDetails();
-        Detail GetAllDetailById(int Id);
-        long AddDetail(Detail entity);
-        void UpdateDetail(Detail entity);
-        void DeleteDetail(Detail entity);
+        Task <IEnumerable<Detail>> GetAllDetails();
+        Task <Detail> GetAllDetailById(int Id);
+        Task AddDetail(Detail entity);
+        Task UpdateDetail(Detail entity);
+        Task DeleteDetail(Detail entity);
     }
 }

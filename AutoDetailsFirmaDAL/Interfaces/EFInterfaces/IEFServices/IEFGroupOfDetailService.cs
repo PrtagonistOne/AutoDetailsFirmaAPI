@@ -13,7 +13,7 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices
         Task UpdateGroupOfDetails(GroupOfDetail groupOfDetail);
 
         Task DeleteGroupOfDetails(GroupOfDetail groupOfDetail);
-        Task <GroupOfDetail> GetGroupOfDetailsById(long Id);
+        Task <GroupOfDetail> GetGroupOfDetailsById(int Id);
         Task <IEnumerable<GroupOfDetail>> GetAllGroupOfDetails();
     }
 }

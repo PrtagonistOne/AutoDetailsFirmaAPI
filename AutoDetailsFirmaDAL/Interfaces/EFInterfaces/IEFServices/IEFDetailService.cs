@@ -13,7 +13,7 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices
         Task UpdateDetails(Detail detail);
 
         Task DeleteDetails(Detail detail);
-        Task <Detail> GetDetailsById(long Id);
+        Task <Detail> GetDetailsById(int Id);
         Task <IEnumerable<Detail>> GetAllDetails();
     }
 }

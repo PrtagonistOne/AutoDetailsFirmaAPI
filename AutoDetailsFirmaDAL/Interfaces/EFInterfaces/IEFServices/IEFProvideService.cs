@@ -13,7 +13,7 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices
         Task UpdateProvides(Provide provide);
 
         Task DeleteProvides(Provide provide);
-        Task <Provide> GetProvides(long Id);
+        Task <Provide> GetProvides(int Id);
         Task <IEnumerable<Provide>> GetProvides();
     }
 }
