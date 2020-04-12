@@ -14,7 +14,7 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices
         Task UpdateProviders(ProviderDTO provider);
 
         Task DeleteProviders(int id);
-        Task <ProviderDTO> GetProviders(int Id);
+        Task <ProviderDTO> GetProvidersById(int Id);
         Task <IEnumerable<ProviderDTO>> GetProviders();
     }
 }

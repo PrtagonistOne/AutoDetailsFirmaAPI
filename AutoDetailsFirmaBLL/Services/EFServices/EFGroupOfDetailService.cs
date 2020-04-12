@@ -19,7 +19,7 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
         }
         public async Task<IEnumerable<GroupOfDetailDTO>> GetAllGroupOfDetails()
         {
-            var x = await _eFUnitOfWork.EFGroupOfDetailRepository.GetAllGroupOfDetails();
+            var x = await _eFUnitOfWork.EFGroupOfDetailRepository.GetAll();
             List<GroupOfDetailDTO> r = new List<GroupOfDetailDTO>();
             foreach (var key in x)
                 r.Add(_mapper.Map<GroupOfDetail, GroupOfDetailDTO>(key));

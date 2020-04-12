@@ -25,7 +25,7 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
                 r.Add(_mapper.Map<Provider, ProviderDTO>(key));
             return r;
         }
-        public async Task<ProviderDTO> GetProviders(int id)
+        public async Task<ProviderDTO> GetProvidersById(int id)
         {
             var x = await _eFUnitOfWork.EFProviderRepository.GetAllProvidersById(id);
             return _mapper.Map<Provider, ProviderDTO>(x);
