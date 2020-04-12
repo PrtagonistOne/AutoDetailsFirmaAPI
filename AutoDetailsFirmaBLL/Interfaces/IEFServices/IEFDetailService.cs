@@ -1,4 +1,5 @@
-﻿using AutoDetailsFirmaDAL.Entities;
+﻿using AutoDetailsFirmaBLL.DTO;
+using AutoDetailsFirmaDAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,12 +9,12 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices
 {
     public interface IEFDetailService
     {
-        Task AddDetails(Detail detail);
+        Task AddDetails(DetailDTO detail);
 
-        Task UpdateDetails(Detail detail);
+        Task UpdateDetails(DetailDTO detail);
 
-        Task DeleteDetails(Detail detail);
-        Task <Detail> GetDetailsById(int Id);
-        Task <IEnumerable<Detail>> GetAllDetails();
+        Task DeleteDetails(int id);
+        Task <DetailDTO> GetDetailsById(int Id);
+        Task <IEnumerable<DetailDTO>> GetAllDetails();
     }
 }

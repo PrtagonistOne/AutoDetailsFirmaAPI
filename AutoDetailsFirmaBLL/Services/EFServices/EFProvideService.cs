@@ -1,6 +1,8 @@
-﻿using AutoDetailsFirmaDAL.Entities;
+﻿using AutoDetailsFirmaBLL.DTO;
+using AutoDetailsFirmaDAL.Entities;
 using AutoDetailsFirmaDAL.Interfaces;
 using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices;
+using AutoMapper;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,29 +11,39 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
     public class EFProvideService : IEFProvideService
     {
         IEFUnitOfWork _eFUnitOfWork;
-        public EFProvideService(IEFUnitOfWork eFUnitOfWork)
+        private readonly IMapper _mapper;
+        public EFProvideService(IEFUnitOfWork eFUnitOfWork, IMapper mapper)
         {
             _eFUnitOfWork = eFUnitOfWork;
+            _mapper = mapper;
         }
-        public async Task<IEnumerable<Provide>> GetProvides()
+        public async Task<IEnumerable<ProvideDTO>> GetProvides()
         {
-            return await _eFUnitOfWork.EFProvideRepository.GetAll();
+            var x = await _eFUnitOfWork.EFProvideRepository.GetAll();
+            List<ProvideDTO> r = new List<ProvideDTO>();
+            foreach (var key in x)
+                r.Add(_mapper.Map<Provide, ProvideDTO>(key));
+            return r;
         }
-        public async Task<Provide> GetByIdProvides(int id)
+        public async Task<ProvideDTO> GetByIdProvides(int id)
         {
-            return await _eFUnitOfWork.EFProvideRepository.GetAllProvidesById(id);
+            var x = await _eFUnitOfWork.EFProvideRepository.GetAllProvidesById(id);
+            return _mapper.Map<Provide, ProvideDTO>(x);
+
         }
-        public async Task AddProvides(Provide provide)
+        public async Task AddProvides(ProvideDTO provide)
         {
-            await _eFUnitOfWork.EFProvideRepository.AddProvides(provide);
+            var x = _mapper.Map<ProvideDTO, Provide>(provide);
+            await _eFUnitOfWork.EFProvideRepository.AddProvides(x);
         }
-        public async Task UpdateProvides(Provide provide)
+        public async Task UpdateProvides(ProvideDTO provide)
         {
-            await _eFUnitOfWork.EFProvideRepository.UpdateProvides(provide);
+            var x = _mapper.Map<ProvideDTO, Provide>(provide);
+            await _eFUnitOfWork.EFProvideRepository.UpdateProvides(x);
         }
-        public async Task DeleteProvides(Provide provide)
+        public async Task DeleteProvides(int id)
         {
-            await _eFUnitOfWork.EFProvideRepository.DeleteProvides(provide);
+            await _eFUnitOfWork.EFProvideRepository.DeleteProvides(id);
         }
     }
 }

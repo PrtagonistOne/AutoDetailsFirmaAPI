@@ -30,9 +30,9 @@ namespace AutoDetailsFirmaDAL.Repositories.EFRepositories
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
-        public async Task DeleteGroupOfDetails(GroupOfDetail entity)
+        public async Task DeleteGroupOfDetails(int id)
         {
-            _context.Entry(entity).State = EntityState.Deleted;
+            _context.Entry(id).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
         }
     }

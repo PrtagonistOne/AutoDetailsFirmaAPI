@@ -1,6 +1,8 @@
-﻿using AutoDetailsFirmaDAL.Entities;
+﻿using AutoDetailsFirmaBLL.DTO;
+using AutoDetailsFirmaDAL.Entities;
 using AutoDetailsFirmaDAL.Interfaces;
 using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices;
+using AutoMapper;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,29 +11,38 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
     public class EFShopService : IEFShopService
     {
         IEFUnitOfWork _eFUnitOfWork;
-        public EFShopService(IEFUnitOfWork eFUnitOfWork)
+        private readonly IMapper _mapper;
+        public EFShopService(IEFUnitOfWork eFUnitOfWork, IMapper mapper)
         {
             _eFUnitOfWork = eFUnitOfWork;
+            _mapper = mapper;
         }
-        public async Task<IEnumerable<Shop>> GetAllShops()
+        public async Task<IEnumerable<ShopDTO>> GetAllShops()
         {
-            return await _eFUnitOfWork.EFShopRepository.GetAllShops();
+            var x = await _eFUnitOfWork.EFShopRepository.GetAllShops();
+            List<ShopDTO> r = new List<ShopDTO>();
+            foreach (var key in x)
+                r.Add(_mapper.Map<Shop, ShopDTO>(key));
+            return r;
         }
-        public async Task<Shop> GetShop(int id)
+        public async Task<ShopDTO> GetShop(int id)
         {
-            return await _eFUnitOfWork.EFShopRepository.GetAllShopsById(id);
+            var x = await _eFUnitOfWork.EFShopRepository.GetAllShopsById(id);
+            return _mapper.Map<Shop, ShopDTO>(x);
         }
-        public async Task AddShops(Shop shop)
+        public async Task AddShops(ShopDTO shop)
         {
-            await _eFUnitOfWork.EFShopRepository.AddShops(shop);
+            var x = _mapper.Map<ShopDTO, Shop>(shop);
+            await _eFUnitOfWork.EFShopRepository.AddShops(x);
         }
-        public async Task UpdateShops(Shop shop)
+        public async Task UpdateShops(ShopDTO shop)
         {
-            await _eFUnitOfWork.EFShopRepository.UpdateShops(shop);
+            var x = _mapper.Map<ShopDTO, Shop>(shop);
+            await _eFUnitOfWork.EFShopRepository.UpdateShops(x);
         }
-        public async Task DeleteShops(Shop shop)
+        public async Task DeleteShops(int id)
         {
-            await _eFUnitOfWork.EFShopRepository.DeleteShops(shop);
+            await _eFUnitOfWork.EFShopRepository.DeleteShops(id);
         }
     }
 }

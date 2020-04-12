@@ -10,6 +10,6 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFRepositories
         Task<Shop> GetAllShopsById(int Id);
         Task AddShops(Shop entity);
         Task UpdateShops(Shop entity);
-        Task DeleteShops(Shop entity);
+        Task DeleteShops(int id);
     }
 }

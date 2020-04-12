@@ -1,4 +1,5 @@
-﻿using AutoDetailsFirmaDAL.Entities;
+﻿using AutoDetailsFirmaBLL.DTO;
+using AutoDetailsFirmaDAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,12 +9,12 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices
 {
     public interface IEFShopService
     {
-        Task AddShops(Shop shop);
+        Task AddShops(ShopDTO shop);
 
-        Task UpdateShops(Shop shop);
+        Task UpdateShops(ShopDTO shop);
 
-        Task DeleteShops(Shop shop);
-        Task <Shop> GetShop(int Id);
-        Task <IEnumerable<Shop>> GetAllShops();
+        Task DeleteShops(int id);
+        Task <ShopDTO> GetShop(int Id);
+        Task <IEnumerable<ShopDTO>> GetAllShops();
     }
 }

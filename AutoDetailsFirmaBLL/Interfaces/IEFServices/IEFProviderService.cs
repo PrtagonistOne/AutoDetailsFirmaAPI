@@ -1,4 +1,5 @@
-﻿using AutoDetailsFirmaDAL.Entities;
+﻿using AutoDetailsFirmaBLL.DTO;
+using AutoDetailsFirmaDAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,12 +9,12 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices
 {
     public interface IEFProviderService
     {
-        Task AddProviders(Provider provider);
+        Task AddProviders(ProviderDTO provider);
 
-        Task UpdateProviders(Provider provider);
+        Task UpdateProviders(ProviderDTO provider);
 
-        Task DeleteProviders(Provider provider);
-        Task <Provider> GetProviders(int Id);
-        Task <IEnumerable<Provider>> GetProviders();
+        Task DeleteProviders(int id);
+        Task <ProviderDTO> GetProviders(int Id);
+        Task <IEnumerable<ProviderDTO>> GetProviders();
     }
 }

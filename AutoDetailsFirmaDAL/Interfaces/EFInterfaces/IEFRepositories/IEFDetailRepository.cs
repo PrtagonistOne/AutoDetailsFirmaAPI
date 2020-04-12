@@ -10,6 +10,6 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFRepositories
         Task <Detail> GetAllDetailsById(int Id);
         Task AddDetails(Detail entity);
         Task UpdateDetails(Detail entity);
-        Task DeleteDetails(Detail entity);
+        Task DeleteDetails(int id);
     }
 }

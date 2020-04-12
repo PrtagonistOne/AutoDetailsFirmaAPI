@@ -1,6 +1,8 @@
-﻿using AutoDetailsFirmaDAL.Entities;
+﻿using AutoDetailsFirmaBLL.DTO;
+using AutoDetailsFirmaDAL.Entities;
 using AutoDetailsFirmaDAL.Interfaces;
 using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices;
+using AutoMapper;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -9,29 +11,38 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
     public class EFProviderService : IEFProviderService
     {
         IEFUnitOfWork _eFUnitOfWork;
-        public EFProviderService(IEFUnitOfWork eFUnitOfWork)
+        private readonly IMapper _mapper;
+        public EFProviderService(IEFUnitOfWork eFUnitOfWork, IMapper mapper)
         {
             _eFUnitOfWork = eFUnitOfWork;
+            _mapper = mapper;
         }
-        public async Task<IEnumerable<Provider>> GetProviders()
+        public async Task<IEnumerable<ProviderDTO>> GetProviders()
         {
-            return await _eFUnitOfWork.EFProviderRepository.GetAllProviders();
+            var x = await _eFUnitOfWork.EFProviderRepository.GetAllProviders();
+            List<ProviderDTO> r = new List<ProviderDTO>();
+            foreach (var key in x)
+                r.Add(_mapper.Map<Provider, ProviderDTO>(key));
+            return r;
         }
-        public async Task<Provider> GetProviders(int id)
+        public async Task<ProviderDTO> GetProviders(int id)
         {
-            return await _eFUnitOfWork.EFProviderRepository.GetAllProvidersById(id);
+            var x = await _eFUnitOfWork.EFProviderRepository.GetAllProvidersById(id);
+            return _mapper.Map<Provider, ProviderDTO>(x);
         }
-        public async Task AddProviders(Provider provider)
+        public async Task AddProviders(ProviderDTO provider)
         {
-            await _eFUnitOfWork.EFProviderRepository.AddProviders(provider);
+            var x = _mapper.Map<ProviderDTO, Provider>(provider);
+            await _eFUnitOfWork.EFProviderRepository.AddProviders(x);
         }
-        public async Task UpdateProviders(Provider provider)
+        public async Task UpdateProviders(ProviderDTO provider)
         {
-            await _eFUnitOfWork.EFProviderRepository.UpdateProviders(provider);
+            var x = _mapper.Map<ProviderDTO, Provider>(provider);
+            await _eFUnitOfWork.EFProviderRepository.UpdateProviders(x);
         }
-        public async Task DeleteProviders(Provider provider)
+        public async Task DeleteProviders(int id)
         {
-            await _eFUnitOfWork.EFProviderRepository.DeleteProviders(provider);
+            await _eFUnitOfWork.EFProviderRepository.DeleteProviders(id);
         }
     }
 }

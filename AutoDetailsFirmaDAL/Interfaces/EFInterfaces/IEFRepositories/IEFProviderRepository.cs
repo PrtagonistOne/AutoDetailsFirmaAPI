@@ -10,6 +10,6 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFRepositories
         Task<Provider> GetAllProvidersById(int Id);
         Task AddProviders(Provider entity);
         Task UpdateProviders(Provider entity);
-        Task DeleteProviders(Provider entity);
+        Task DeleteProviders(int id);
     }
 }
