@@ -11,5 +11,6 @@ namespace AutoDetailsFirmaBLL.DTO
         public double PriceOfGroupOfDetail { get; set; }
         public string NotesOfGroupOfDetail { get; set; }
         public DateTime? DataOfGroupOfDetail { get; set; }
-    
+
+    }
 }

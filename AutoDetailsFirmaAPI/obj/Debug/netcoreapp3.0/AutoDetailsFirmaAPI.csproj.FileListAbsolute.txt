@@ -55,3 +55,6 @@ D:\Универ\2 Курс 4 семестр\ООП\VSEOK\AutoDetailsFirmaAPI\Aut
 D:\Универ\2 Курс 4 семестр\ООП\VSEOK\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\obj\Debug\netcoreapp3.0\AutoDetailsFirmaAPI.pdb
 D:\Универ\2 Курс 4 семестр\ООП\VSEOK\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\AutoMapper.dll
 D:\Универ\2 Курс 4 семестр\ООП\VSEOK\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Универ\2 Курс 4 семестр\ООП\VSEOK\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\AutoDetailsFirmaBLL.dll
+D:\Универ\2 Курс 4 семестр\ООП\VSEOK\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\AutoDetailsFirmaBLL.pdb
+D:\Универ\2 Курс 4 семестр\ООП\VSEOK\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\obj\Debug\netcoreapp3.0\AutoDetailsFirmaAPI.MvcApplicationPartsAssemblyInfo.cache
