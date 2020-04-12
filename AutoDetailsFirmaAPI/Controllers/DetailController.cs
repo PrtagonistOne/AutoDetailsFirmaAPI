@@ -13,19 +13,7 @@ namespace AutoDetailsFirmaAPI.Controllers
     [Route("api/[controller]")]
     public class DetailController : Controller
     {
-        AutoDetailContext _autoDetailContext;
-
-        public DetailController(AutoDetailContext detailService)
-        {
-            _autoDetailContext = detailService;
-        }
-
-        // GET: Get all employees
-        [HttpGet]
-        public IEnumerable<Detail> Get()
-        {
-            return _autoDetailContext.Set<Detail>().ToList();
-        }
+        
 
     }
 }

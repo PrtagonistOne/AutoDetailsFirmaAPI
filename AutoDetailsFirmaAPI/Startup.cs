@@ -12,6 +12,15 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using AutoDetailsFirmaDAL.EF;
 using Microsoft.EntityFrameworkCore;
+using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFRepositories;
+using AutoDetailsFirmaDAL.Repositories.EFRepositories;
+using AutoMapper;
+using AutoDetailsFirmaDAL.Entities;
+using AutoDetailsFirmaBLL.DTO;
+using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices;
+using AutoDetailsFirmaBLL.Services.EFServices;
+using AutoDetailsFirmaDAL.Interfaces;
+using AutoDetailsFirmaDAL.UnitOfWork;
 
 namespace AutoDetailsFirmaAPI
 {
@@ -32,8 +41,39 @@ namespace AutoDetailsFirmaAPI
             {
                 cfg.UseSqlServer(Configuration.GetConnectionString("Default"), b => b.MigrationsAssembly("AutoDetailsFirmaAPI"));
             });
+            services.AddTransient<IEFDetailRepository, EFDetailRepository>();
+            services.AddTransient<IEFGroupOfDetailRepository, EFGroupOfDetailRepository>();
+            services.AddTransient<IEFProvideRepository, EFProvideRepository>();
+            services.AddTransient<IEFProviderRepository, EFProviderRepository>();
+            services.AddTransient<IEFShopRepository, EFShopRepository>();
+
+            services.AddAutoMapper(cfg =>
+            {
+                cfg.CreateMap<Detail, DetailDTO>();
+                cfg.CreateMap<GroupOfDetail, GroupOfDetailDTO>();
+                cfg.CreateMap<Provide, ProvideDTO>();
+                cfg.CreateMap<Provider, ProviderDTO>();
+                cfg.CreateMap<Shop, ShopDTO>();
+
+                cfg.CreateMap<DetailDTO, Detail>();
+                cfg.CreateMap<GroupOfDetailDTO, GroupOfDetail>();
+                cfg.CreateMap<ProvideDTO, Provide>();
+                cfg.CreateMap<ProviderDTO, Provider>();
+                cfg.CreateMap<ShopDTO, Shop>();
+            }, typeof(Startup));
+
+            services.AddTransient<IEFDetailService, EFDetailService>();
+            services.AddTransient<IEFGroupOfDetailService, EFGroupOfDetailService>();
+            services.AddTransient<IEFProvideService, EFProvideService>();
+            services.AddTransient<IEFProviderService, EFProviderService>();
+            services.AddTransient<IEFShopService, EFShopService>();
+
+            services.AddTransient<IEFUnitOfWork, EFUnitOfWork>();
+
             services.AddControllers();
         }
+
+        
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

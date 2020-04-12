@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoDetailsFirmaBLL.Services.EFServices
 {
-    class EFDetailService : IEFDetailService
+    public class EFDetailService : IEFDetailService
     {
         IEFUnitOfWork _eFUnitOfWork;
         public EFDetailService(IEFUnitOfWork eFUnitOfWork)
@@ -33,5 +33,7 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
         {
             await _eFUnitOfWork.EFDetailRepository.DeleteDetails(detail);
         }
+
+
     }
 }
