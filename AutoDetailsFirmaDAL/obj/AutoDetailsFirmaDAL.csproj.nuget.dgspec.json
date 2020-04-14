@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj": {}
+    "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj": {}
   },
   "projects": {
-    "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj": {
+    "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj",
+        "projectUniqueName": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj",
         "projectName": "AutoDetailsFirmaDAL",
-        "projectPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj",
+        "projectPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj",
         "packagesPath": "C:\\Users\\playe\\.nuget\\packages\\",
-        "outputPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\obj\\",
+        "outputPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\playe\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -41,6 +41,10 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "Microsoft.AspNet.Identity.EntityFramework": {
+              "target": "Package",
+              "version": "[2.2.3, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",

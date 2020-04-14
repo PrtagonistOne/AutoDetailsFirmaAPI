@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaAPI\\AutoDetailsFirmaAPI.csproj": {}
+    "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaAPI\\AutoDetailsFirmaAPI.csproj": {}
   },
   "projects": {
-    "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaAPI\\AutoDetailsFirmaAPI.csproj": {
+    "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaAPI\\AutoDetailsFirmaAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaAPI\\AutoDetailsFirmaAPI.csproj",
+        "projectUniqueName": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaAPI\\AutoDetailsFirmaAPI.csproj",
         "projectName": "AutoDetailsFirmaAPI",
-        "projectPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaAPI\\AutoDetailsFirmaAPI.csproj",
+        "projectPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaAPI\\AutoDetailsFirmaAPI.csproj",
         "packagesPath": "C:\\Users\\playe\\.nuget\\packages\\",
-        "outputPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaAPI\\obj\\",
+        "outputPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\playe\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -27,11 +27,11 @@
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaBLL\\AutoDetailsFirmaBLL.csproj": {
-                "projectPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaBLL\\AutoDetailsFirmaBLL.csproj"
+              "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaBLL\\AutoDetailsFirmaBLL.csproj": {
+                "projectPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaBLL\\AutoDetailsFirmaBLL.csproj"
               },
-              "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj": {
-                "projectPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj"
+              "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj": {
+                "projectPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj"
               }
             }
           }
@@ -52,6 +52,14 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "Microsoft.AspNet.Identity.Core": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
+            "Microsoft.AspNet.Identity.EntityFramework": {
+              "target": "Package",
+              "version": "[2.2.3, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -86,14 +94,14 @@
         }
       }
     },
-    "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaBLL\\AutoDetailsFirmaBLL.csproj": {
+    "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaBLL\\AutoDetailsFirmaBLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaBLL\\AutoDetailsFirmaBLL.csproj",
+        "projectUniqueName": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaBLL\\AutoDetailsFirmaBLL.csproj",
         "projectName": "AutoDetailsFirmaBLL",
-        "projectPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaBLL\\AutoDetailsFirmaBLL.csproj",
+        "projectPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaBLL\\AutoDetailsFirmaBLL.csproj",
         "packagesPath": "C:\\Users\\playe\\.nuget\\packages\\",
-        "outputPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaBLL\\obj\\",
+        "outputPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaBLL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\playe\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -109,8 +117,8 @@
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj": {
-                "projectPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj"
+              "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj": {
+                "projectPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj"
               }
             }
           }
@@ -142,14 +150,14 @@
         }
       }
     },
-    "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj": {
+    "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj",
+        "projectUniqueName": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj",
         "projectName": "AutoDetailsFirmaDAL",
-        "projectPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj",
+        "projectPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj",
         "packagesPath": "C:\\Users\\playe\\.nuget\\packages\\",
-        "outputPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\VSEOK\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\obj\\",
+        "outputPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\playe\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -179,6 +187,10 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "Microsoft.AspNet.Identity.EntityFramework": {
+              "target": "Package",
+              "version": "[2.2.3, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",

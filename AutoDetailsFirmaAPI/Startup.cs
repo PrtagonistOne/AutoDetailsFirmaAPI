@@ -41,11 +41,20 @@ namespace AutoDetailsFirmaAPI
             {
                 cfg.UseSqlServer(Configuration.GetConnectionString("Default"), b => b.MigrationsAssembly("AutoDetailsFirmaAPI"));
             });
+
+
+        
+
+
             services.AddTransient<IEFDetailRepository, EFDetailRepository>();
             services.AddTransient<IEFGroupOfDetailRepository, EFGroupOfDetailRepository>();
             services.AddTransient<IEFProvideRepository, EFProvideRepository>();
             services.AddTransient<IEFProviderRepository, EFProviderRepository>();
             services.AddTransient<IEFShopRepository, EFShopRepository>();
+
+
+
+
 
             services.AddAutoMapper(cfg =>
             {

@@ -9,7 +9,6 @@ namespace AutoDetailsFirmaDAL.Repositories.EFRepositories
 {
     public class EFDetailRepository : GenericRepository<Detail, int>, IEFDetailRepository
     {
-        private readonly AutoDetailContext _context;
         public EFDetailRepository(AutoDetailContext context) : base(context)
         {
         }

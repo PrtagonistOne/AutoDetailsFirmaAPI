@@ -12,6 +12,7 @@ namespace AutoDetailsFirmaDAL.Interfaces
         IEFProvideRepository EFProvideRepository { get; }
         IEFProviderRepository EFProviderRepository { get; }
         IEFShopRepository EFShopRepository { get; }
+
         void Complete();
     }
 }

@@ -9,31 +9,9 @@ namespace AutoDetailsFirmaDAL.Repositories.EFRepositories
 {
     public class EFProviderRepository : GenericRepository<Provider, int>, IEFProviderRepository
     {
-        private readonly AutoDetailContext _context;
         public EFProviderRepository(AutoDetailContext context) : base(context)
         {
         }
-        public async Task<IEnumerable<Provider>> GetAllProviders()
-        {
-            return await _context.Set<Provider>().ToListAsync();
-        }
-        public async Task<Provider> GetAllProvidersById(int id)
-        {
-            return await _context.Set<Provider>().FindAsync(id);
-        }
-        public async Task AddProviders(Provider entity)
-        {
-            await _context.AddAsync<Provider>(entity);
-        }
-        public async Task UpdateProviders(Provider entity)
-        {
-            _context.Entry(entity).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-        }
-        public async Task DeleteProviders(int id)
-        {
-            _context.Entry(id).State = EntityState.Deleted;
-            await _context.SaveChangesAsync();
-        }
+        
     }
 }
