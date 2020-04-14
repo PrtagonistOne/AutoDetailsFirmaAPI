@@ -19,7 +19,7 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
         }
         public async Task<IEnumerable<ShopDTO>> GetAllShops()
         {
-            var x = await _eFUnitOfWork.EFShopRepository.GetAllShops();
+            var x = await _eFUnitOfWork.EFShopRepository.GetAll();
             List<ShopDTO> r = new List<ShopDTO>();
             foreach (var key in x)
                 r.Add(_mapper.Map<Shop, ShopDTO>(key));
@@ -27,22 +27,22 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
         }
         public async Task<ShopDTO> GetShop(int id)
         {
-            var x = await _eFUnitOfWork.EFShopRepository.GetAllShopsById(id);
+            var x = await _eFUnitOfWork.EFShopRepository.Get(id);
             return _mapper.Map<Shop, ShopDTO>(x);
         }
         public async Task AddShops(ShopDTO shop)
         {
             var x = _mapper.Map<ShopDTO, Shop>(shop);
-            await _eFUnitOfWork.EFShopRepository.AddShops(x);
+            await _eFUnitOfWork.EFShopRepository.Add(x);
         }
         public async Task UpdateShops(ShopDTO shop)
         {
             var x = _mapper.Map<ShopDTO, Shop>(shop);
-            await _eFUnitOfWork.EFShopRepository.UpdateShops(x);
+            await _eFUnitOfWork.EFShopRepository.Update(x);
         }
         public async Task DeleteShops(int id)
         {
-            await _eFUnitOfWork.EFShopRepository.DeleteShops(id);
+            await _eFUnitOfWork.EFShopRepository.Delete(id);
         }
     }
 }

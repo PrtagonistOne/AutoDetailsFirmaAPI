@@ -27,23 +27,23 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
         }
         public async Task<GroupOfDetailDTO> GetGroupOfDetailsById(int id)
         {
-            var x = await _eFUnitOfWork.EFGroupOfDetailRepository.GetAllGroupOfDetailsById(id);
+            var x = await _eFUnitOfWork.EFGroupOfDetailRepository.Get(id);
             return _mapper.Map<GroupOfDetail, GroupOfDetailDTO>(x);
         }
         public async Task AddGroupOfDetails(GroupOfDetailDTO groupOf)
         {
             var x = _mapper.Map<GroupOfDetailDTO, GroupOfDetail>(groupOf);
-            await _eFUnitOfWork.EFGroupOfDetailRepository.AddGroupOfDetails(x);
+            await _eFUnitOfWork.EFGroupOfDetailRepository.Add(x);
 
         }
         public async Task UpdateGroupOfDetails(GroupOfDetailDTO groupOf)
         {
             var x = _mapper.Map<GroupOfDetailDTO, GroupOfDetail>(groupOf);
-            await _eFUnitOfWork.EFGroupOfDetailRepository.UpdateGroupOfDetails(x);
+            await _eFUnitOfWork.EFGroupOfDetailRepository.Update(x);
         }
         public async Task DeleteGroupOfDetails(int id)
         {
-            await _eFUnitOfWork.EFGroupOfDetailRepository.DeleteGroupOfDetails(id);
+            await _eFUnitOfWork.EFGroupOfDetailRepository.Delete(id);
         }
     }
 }

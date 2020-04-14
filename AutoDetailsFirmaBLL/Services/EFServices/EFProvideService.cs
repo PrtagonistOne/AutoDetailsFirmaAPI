@@ -27,23 +27,23 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
         }
         public async Task<ProvideDTO> GetByIdProvides(int id)
         {
-            var x = await _eFUnitOfWork.EFProvideRepository.GetAllProvidesById(id);
+            var x = await _eFUnitOfWork.EFProvideRepository.Get(id);
             return _mapper.Map<Provide, ProvideDTO>(x);
 
         }
         public async Task AddProvides(ProvideDTO provide)
         {
             var x = _mapper.Map<ProvideDTO, Provide>(provide);
-            await _eFUnitOfWork.EFProvideRepository.AddProvides(x);
+            await _eFUnitOfWork.EFProvideRepository.Add(x);
         }
         public async Task UpdateProvides(ProvideDTO provide)
         {
             var x = _mapper.Map<ProvideDTO, Provide>(provide);
-            await _eFUnitOfWork.EFProvideRepository.UpdateProvides(x);
+            await _eFUnitOfWork.EFProvideRepository.Update(x);
         }
         public async Task DeleteProvides(int id)
         {
-            await _eFUnitOfWork.EFProvideRepository.DeleteProvides(id);
+            await _eFUnitOfWork.EFProvideRepository.Delete(id);
         }
     }
 }

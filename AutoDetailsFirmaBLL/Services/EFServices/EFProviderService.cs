@@ -19,7 +19,7 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
         }
         public async Task<IEnumerable<ProviderDTO>> GetProviders()
         {
-            var x = await _eFUnitOfWork.EFProviderRepository.GetAllProviders();
+            var x = await _eFUnitOfWork.EFProviderRepository.GetAll();
             List<ProviderDTO> r = new List<ProviderDTO>();
             foreach (var key in x)
                 r.Add(_mapper.Map<Provider, ProviderDTO>(key));
@@ -27,22 +27,22 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
         }
         public async Task<ProviderDTO> GetProvidersById(int id)
         {
-            var x = await _eFUnitOfWork.EFProviderRepository.GetAllProvidersById(id);
+            var x = await _eFUnitOfWork.EFProviderRepository.Get(id);
             return _mapper.Map<Provider, ProviderDTO>(x);
         }
         public async Task AddProviders(ProviderDTO provider)
         {
             var x = _mapper.Map<ProviderDTO, Provider>(provider);
-            await _eFUnitOfWork.EFProviderRepository.AddProviders(x);
+            await _eFUnitOfWork.EFProviderRepository.Add(x);
         }
         public async Task UpdateProviders(ProviderDTO provider)
         {
             var x = _mapper.Map<ProviderDTO, Provider>(provider);
-            await _eFUnitOfWork.EFProviderRepository.UpdateProviders(x);
+            await _eFUnitOfWork.EFProviderRepository.Update(x);
         }
         public async Task DeleteProviders(int id)
         {
-            await _eFUnitOfWork.EFProviderRepository.DeleteProviders(id);
+            await _eFUnitOfWork.EFProviderRepository.Delete(id);
         }
     }
 }
