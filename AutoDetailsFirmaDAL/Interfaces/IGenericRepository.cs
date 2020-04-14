@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace AutoDetailsFirmaDAL.Interfaces
 {
-    public interface IGenericRepository<TEntity, TId> where TEntity : class, IEntity<TId>
+    public interface IGenericRepository<TEntity, TId> where TEntity : IEntity<TId>
     {
         Task <IEnumerable<TEntity>> GetAll();
 
@@ -14,6 +14,6 @@ namespace AutoDetailsFirmaDAL.Interfaces
 
         Task Update(TEntity entity);
 
-        Task Delete(int id);
+        Task Delete(TId id);
     }
 }
