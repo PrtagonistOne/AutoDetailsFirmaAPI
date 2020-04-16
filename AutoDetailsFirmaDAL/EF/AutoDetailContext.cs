@@ -1,13 +1,11 @@
 ﻿using AutoDetailsFirmaDAL.Entities;
+using AutoDetailsFirmaDAL.Entities.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace AutoDetailsFirmaDAL.EF
 {
-    public class AutoDetailContext : DbContext
+    public class AutoDetailContext : IdentityDbContext<User, Role, int>
     {
         DbSet<Detail> Details { get; set; }
         DbSet<GroupOfDetail> GroupOfDetails { get; set; }
