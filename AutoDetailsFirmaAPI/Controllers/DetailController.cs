@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AutoDetailsFirmaAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class DetailController : Controller
     {
         IEFDetailService _iEFDetail;
@@ -89,6 +89,18 @@ namespace AutoDetailsFirmaAPI.Controllers
                 return StatusCode(404);
             }
         }
-
+        //Get Old and New
+        [HttpGet("{car}")]
+        public async Task<IActionResult> GetCarByName(string car)
+        {
+            try
+            {
+                return Ok(await _iEFDetail.GetCarByName(car));
+            }
+            catch
+            {
+                return StatusCode(404);
+            }
+        }
     }
 }

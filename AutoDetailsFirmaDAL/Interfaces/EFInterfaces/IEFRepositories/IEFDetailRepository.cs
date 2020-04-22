@@ -6,5 +6,6 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFRepositories
 {
     public interface IEFDetailRepository : IGenericRepository<Detail, int>
     {
+        Task<IEnumerable<Detail>> GetCarByName(string car);
     }
 }

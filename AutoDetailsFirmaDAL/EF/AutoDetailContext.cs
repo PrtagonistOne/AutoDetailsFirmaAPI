@@ -6,11 +6,11 @@ namespace AutoDetailsFirmaDAL.EF
 {
     public class AutoDetailContext : DbContext
     {
-        DbSet<Detail> Details { get; set; }
-        DbSet<GroupOfDetail> GroupOfDetails { get; set; }
-        DbSet<Provide> Provides { get; set; }
-        DbSet<Provider> Providers { get; set; }
-        DbSet<Shop> Shops { get; set; }
+        public DbSet<Detail> Details { get; set; }
+        public DbSet<GroupOfDetail> GroupOfDetails { get; set; }
+        public DbSet<Provide> Provides { get; set; }
+        public DbSet<Provider> Providers { get; set; }
+        public DbSet<Shop> Shops { get; set; }
 
         public AutoDetailContext(DbContextOptions<AutoDetailContext> options) : base(options)
         {

@@ -45,7 +45,14 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
         {
             await _eFUnitOfWork.EFDetailRepository.Delete(id);
         }
-
+        public async Task<IEnumerable<DetailDTO>> GetCarByName(string car)
+        {
+            var details = await _eFUnitOfWork.EFDetailRepository.GetCarByName(car);
+            List<DetailDTO> r = new List<DetailDTO>();
+            foreach (var key in details)
+                r.Add(_mapper.Map<Detail, DetailDTO>(key));
+            return r;
+        }
 
     }
 }
