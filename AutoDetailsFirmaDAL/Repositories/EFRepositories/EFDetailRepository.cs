@@ -12,6 +12,7 @@ namespace AutoDetailsFirmaDAL.Repositories.EFRepositories
         public EFDetailRepository(AutoDetailContext context) : base(context)
         {
         }
- 
+
+
     }
 }
