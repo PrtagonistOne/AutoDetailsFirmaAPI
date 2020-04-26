@@ -17,7 +17,6 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices
         Task <DetailDTO> GetDetailsById(int Id);
         Task <IEnumerable<DetailDTO>> GetAllDetails();
 
-
-        Task<IEnumerable<DetailDTO>> GetCarByName(string car);
+        Task<DetailDTO> GetArticleByName(string articleOfDetail);
     }
 }

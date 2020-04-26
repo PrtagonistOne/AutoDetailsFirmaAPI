@@ -11,18 +11,17 @@ namespace AutoDetailsFirmaDAL.Repositories.EFRepositories
 {
     public class EFDetailRepository : GenericRepository<Detail, int>, IEFDetailRepository
     {
-        private readonly AutoDetailContext _context;
 
         public EFDetailRepository(AutoDetailContext context) : base(context)
         {
         }
 
-        public async Task<IEnumerable<Detail>> GetCarByName(string car)
+        public async Task <Detail> GetArticleByName(string articleOfDetail)
         {
-            var details =  _context.Details.Where(p => p.ArticleOfDetail == car);
+            var details = await _context.Set<Detail>().ToListAsync<Detail>();
 
-            return await details.ToListAsync();
-
+            return details.Where(details => details.ArticleOfDetail == articleOfDetail).FirstOrDefault();
+            
         }
         
     }

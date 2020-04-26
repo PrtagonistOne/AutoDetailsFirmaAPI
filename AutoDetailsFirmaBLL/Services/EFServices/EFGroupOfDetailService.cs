@@ -45,5 +45,11 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
         {
             await _eFUnitOfWork.EFGroupOfDetailRepository.Delete(id);
         }
+        public async Task<GroupOfDetailDTO> GetGroupByName(string id)
+        {
+            var x = await _eFUnitOfWork.EFGroupOfDetailRepository.GetGroupByName(id);
+            GroupOfDetailDTO res = _mapper.Map<GroupOfDetail, GroupOfDetailDTO>(x);
+            return res;
+        }
     }
 }

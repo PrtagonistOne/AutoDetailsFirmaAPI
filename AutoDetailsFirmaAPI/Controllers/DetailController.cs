@@ -12,7 +12,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AutoDetailsFirmaAPI.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    
+    [Route("api/[controller]")]
     public class DetailController : Controller
     {
         IEFDetailService _iEFDetail;
@@ -35,18 +36,18 @@ namespace AutoDetailsFirmaAPI.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
-        {
-            try
-            {
-                return Ok(await _iEFDetail.GetDetailsById(id));
-            }
-            catch
-            {
-                return StatusCode(404);
-            }
-        }
+         [HttpGet("id/{id}")]
+         public async Task<IActionResult> Get(int id)
+         {
+             try
+             {
+                 return Ok(await _iEFDetail.GetDetailsById(id));
+             }
+             catch
+             {
+                 return StatusCode(404);
+             }
+         }
         //POST
         public async Task<IActionResult> Post([FromBody]DetailDTO value)
         {
@@ -90,12 +91,12 @@ namespace AutoDetailsFirmaAPI.Controllers
             }
         }
         //Get Old and New
-        [HttpGet("{car}")]
-        public async Task<IActionResult> GetCarByName(string car)
+        [HttpGet("articleOfDetail/{articleOfDetail}")]
+        public async Task<IActionResult> GetByArticle(string articleOfDetail)
         {
             try
             {
-                return Ok(await _iEFDetail.GetCarByName(car));
+                return Ok(await _iEFDetail.GetArticleByName(articleOfDetail));
             }
             catch
             {

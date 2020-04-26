@@ -11,7 +11,7 @@ namespace AutoDetailsFirmaDAL.Repositories
 {
     public class GenericRepository<TEntity, TId> : IGenericRepository<TEntity, TId> where TEntity : class, IEntity<TId>
     {
-        private readonly AutoDetailContext _context;
+        protected AutoDetailContext _context;
         protected DbSet<TEntity> _dbSet;
         public GenericRepository(AutoDetailContext context)
         {

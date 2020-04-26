@@ -35,12 +35,24 @@ namespace AutoDetailsFirmaAPI.Controllers
             }
         }
 
-        [HttpGet("{id}")]
+         [HttpGet("id/{id}")]
         public async Task<IActionResult> Get(int id)
         {
             try
             {
                 return Ok(await _iEFGroupOfDetailService.GetGroupOfDetailsById(id));
+            }
+            catch
+            {
+                return StatusCode(404);
+            }
+        }
+        [HttpGet("articleOfGroupOfDetail/{articleOfGroupOfDetail}")]
+        public async Task<IActionResult> GetByName(string articleOfGroupOfDetail)
+        {
+            try
+            {
+                return Ok(await _iEFGroupOfDetailService.GetGroupByName(articleOfGroupOfDetail));
             }
             catch
             {
