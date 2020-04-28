@@ -6,6 +6,6 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFRepositories
 {
     public interface IEFDetailRepository : IGenericRepository<Detail, int>
     {
-        Task<Detail> GetArticleByName(string articleOfDetail);
+        Task<IEnumerable<Detail>> GetArticleByName(string articleOfDetail);
     }
 }

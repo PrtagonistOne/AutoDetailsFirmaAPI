@@ -2,10 +2,8 @@
 using AutoDetailsFirmaDAL.Entities;
 using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFRepositories;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Linq;
-using System.Data.Entity;
 
 namespace AutoDetailsFirmaDAL.Repositories.EFRepositories
 {
@@ -16,12 +14,19 @@ namespace AutoDetailsFirmaDAL.Repositories.EFRepositories
         {
         }
 
-        public async Task <Detail> GetArticleByName(string articleOfDetail)
+        public async Task <IEnumerable<Detail>> GetArticleByName(string articleOfDetail)                             
         {
-            var details = await _context.Set<Detail>().ToListAsync<Detail>();
+            if(_context != null)
+            {
 
-            return details.Where(details => details.ArticleOfDetail == articleOfDetail).FirstOrDefault();
-            
+                var details = await GetAll();
+                details = details.Where(details => details.ArticleOfDetail == articleOfDetail);               
+
+                return details;
+            }
+
+            return null;
+
         }
         
     }

@@ -94,14 +94,9 @@ namespace AutoDetailsFirmaAPI.Controllers
         [HttpGet("articleOfDetail/{articleOfDetail}")]
         public async Task<IActionResult> GetByArticle(string articleOfDetail)
         {
-            try
-            {
+           //try catch
                 return Ok(await _iEFDetail.GetArticleByName(articleOfDetail));
-            }
-            catch
-            {
-                return StatusCode(404);
-            }
+          
         }
     }
 }

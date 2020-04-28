@@ -20,9 +20,10 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
         public async Task<IEnumerable<DetailDTO>> GetAllDetails()
         {
             var x = await _eFUnitOfWork.EFDetailRepository.GetAll();
-            List<DetailDTO> r = new List<DetailDTO>();
-            foreach (var key in x)
-                r.Add(_mapper.Map<Detail, DetailDTO>(key));
+            //List<DetailDTO> r = new List<DetailDTO>();
+            //foreach (var key in x)
+            //    r.Add(_mapper.Map<Detail, DetailDTO>(key));
+            List<DetailDTO> r = _mapper.Map<List<DetailDTO>>(x);
             return r;
         }
         public async Task<DetailDTO> GetDetailsById(int id)
@@ -45,10 +46,10 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
         {
             await _eFUnitOfWork.EFDetailRepository.Delete(id);
         }
-        public async Task<DetailDTO> GetArticleByName(string articleOfDetail)
+        public async Task<IEnumerable<DetailDTO>> GetArticleByName(string articleOfDetail)
         {
             var x = await _eFUnitOfWork.EFDetailRepository.GetArticleByName(articleOfDetail);
-            DetailDTO res = _mapper.Map<Detail, DetailDTO>(x);
+            List<DetailDTO> res = _mapper.Map<List<DetailDTO>>(x);
             return res;
         }
 

@@ -11,12 +11,10 @@ namespace AutoDetailsFirmaDAL.Repositories
 {
     public class GenericRepository<TEntity, TId> : IGenericRepository<TEntity, TId> where TEntity : class, IEntity<TId>
     {
-        protected AutoDetailContext _context;
-        protected DbSet<TEntity> _dbSet;
+        protected readonly AutoDetailContext _context;
         public GenericRepository(AutoDetailContext context)
         {
             _context = context;
-            _dbSet = context.Set<TEntity>();
         }
         public async Task<IEnumerable<TEntity>>GetAll()
         {
@@ -28,7 +26,7 @@ namespace AutoDetailsFirmaDAL.Repositories
         }
         public async Task Add(TEntity entity)
         {
-            _dbSet.Add(entity);
+            _context.Add(entity);
             await _context.SaveChangesAsync();
         }
         public async Task Update(TEntity entity)
@@ -38,8 +36,7 @@ namespace AutoDetailsFirmaDAL.Repositories
         }
         public async Task Delete(TId id)
         {
-            TEntity x = await _dbSet.FindAsync(id);
-            _dbSet.Remove(x);
+            _context.Remove(_context.Set<TEntity>().Find(id));
             await _context.SaveChangesAsync();
 
         }
