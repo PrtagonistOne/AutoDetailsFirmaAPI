@@ -33,10 +33,13 @@ namespace AutoDetailsFirmaAPI
         {
             services.AddDbContext<AutoDetailContext>(cfg =>
             {
+                
                 cfg.UseSqlServer(Configuration.GetConnectionString("Default"), b => b.MigrationsAssembly("AutoDetailsFirmaAPI"));
             });
 
-
+            services.AddMvc();
+            services.AddIdentity<User, Role>()
+                .AddEntityFrameworkStores<AutoDetailContext>();
     
             services.AddTransient<IEFDetailRepository, EFDetailRepository>();
             services.AddTransient<IEFGroupOfDetailRepository, EFGroupOfDetailRepository>();
@@ -51,12 +54,6 @@ namespace AutoDetailsFirmaAPI
                 cfg.CreateMap<Provide, ProvideDTO>().ReverseMap();
                 cfg.CreateMap<Provider, ProviderDTO>().ReverseMap();
                 cfg.CreateMap<Shop, ShopDTO>().ReverseMap();
-
-                //cfg.CreateMap<DetailDTO, Detail>();
-                //cfg.CreateMap<GroupOfDetailDTO, GroupOfDetail>();
-                //cfg.CreateMap<ProvideDTO, Provide>();
-                //cfg.CreateMap<ProviderDTO, Provider>();
-                //cfg.CreateMap<ShopDTO, Shop>();
             }, typeof(Startup));
 
             services.AddTransient<IEFDetailService, EFDetailService>();
@@ -67,7 +64,7 @@ namespace AutoDetailsFirmaAPI
 
             services.AddTransient<IEFUnitOfWork, EFUnitOfWork>();
 
-            services.AddControllers();
+            services.AddControllersWithViews();
         }
 
         
@@ -80,6 +77,7 @@ namespace AutoDetailsFirmaAPI
             }
 
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -88,7 +86,9 @@ namespace AutoDetailsFirmaAPI
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

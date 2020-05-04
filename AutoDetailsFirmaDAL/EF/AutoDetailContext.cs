@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace AutoDetailsFirmaDAL.EF
 {
-    public class AutoDetailContext : DbContext
+    public class AutoDetailContext : IdentityDbContext<User, Role, int>
     {
          DbSet<Detail> Details { get; set; }
          DbSet<GroupOfDetail> GroupOfDetails { get; set; }

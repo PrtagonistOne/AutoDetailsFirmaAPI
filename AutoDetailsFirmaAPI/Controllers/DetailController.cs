@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using AutoDetailsFirmaBLL.DTO;
-using AutoDetailsFirmaDAL.EF;
-using AutoDetailsFirmaDAL.Entities;
 using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices;
 using Microsoft.AspNetCore.Mvc;
 

@@ -2,9 +2,9 @@
 using AutoDetailsFirmaDAL.Entities;
 using AutoDetailsFirmaDAL.Interfaces;
 using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices;
-using AutoMapper;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace AutoDetailsFirmaBLL.Services.EFServices
 {
