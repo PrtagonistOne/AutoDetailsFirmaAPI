@@ -38,9 +38,7 @@ namespace AutoDetailsFirmaAPI
             });
 
             services.AddMvc();
-            services.AddIdentity<User, Role>()
-                .AddEntityFrameworkStores<AutoDetailContext>();
-    
+
             services.AddTransient<IEFDetailRepository, EFDetailRepository>();
             services.AddTransient<IEFGroupOfDetailRepository, EFGroupOfDetailRepository>();
             services.AddTransient<IEFProvideRepository, EFProvideRepository>();
@@ -65,6 +63,7 @@ namespace AutoDetailsFirmaAPI
             services.AddTransient<IEFUnitOfWork, EFUnitOfWork>();
 
             services.AddControllersWithViews();
+            services.AddRazorPages();
         }
 
         
@@ -81,14 +80,16 @@ namespace AutoDetailsFirmaAPI
 
             app.UseRouting();
 
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
+
             });
         }
     }

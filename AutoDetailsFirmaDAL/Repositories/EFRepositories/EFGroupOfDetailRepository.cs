@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Linq;
-using System.Data.Entity;
 
 namespace AutoDetailsFirmaDAL.Repositories.EFRepositories
 {

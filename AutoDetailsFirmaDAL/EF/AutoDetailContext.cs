@@ -1,10 +1,9 @@
 ﻿using AutoDetailsFirmaDAL.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace AutoDetailsFirmaDAL.EF
 {
-    public class AutoDetailContext : IdentityDbContext<User, Role, int>
+    public class AutoDetailContext : DbContext
     {
          DbSet<Detail> Details { get; set; }
          DbSet<GroupOfDetail> GroupOfDetails { get; set; }
