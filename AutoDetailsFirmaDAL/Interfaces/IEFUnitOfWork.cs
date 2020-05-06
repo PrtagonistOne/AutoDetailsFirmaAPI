@@ -1,4 +1,6 @@
-﻿using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFRepositories;
+﻿using AutoDetailsFirmaDAL.Entities;
+using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFRepositories;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +14,9 @@ namespace AutoDetailsFirmaDAL.Interfaces
         IEFProvideRepository EFProvideRepository { get; }
         IEFProviderRepository EFProviderRepository { get; }
         IEFShopRepository EFShopRepository { get; }
-
+        UserManager<User> UserManager { get; }
+        RoleManager<Role> RoleManager { get; }
+        SignInManager<User> SignInManager { get; }
         void Complete();
     }
 }

@@ -1,9 +1,11 @@
 ﻿using AutoDetailsFirmaDAL.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace AutoDetailsFirmaDAL.EF
 {
-    public class AutoDetailContext : DbContext
+    public class AutoDetailContext : IdentityDbContext<User, Role, int>
     {
          DbSet<Detail> Details { get; set; }
          DbSet<GroupOfDetail> GroupOfDetails { get; set; }
@@ -13,7 +15,7 @@ namespace AutoDetailsFirmaDAL.EF
 
         public AutoDetailContext(DbContextOptions<AutoDetailContext> options) : base(options)
         {
-
+            Database.EnsureCreated();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -15,6 +15,7 @@ using AutoDetailsFirmaBLL.Services.EFServices;
 using AutoDetailsFirmaDAL.Interfaces;
 using AutoDetailsFirmaDAL.UnitOfWork;
 using Microsoft.AspNetCore.Identity;
+using AutoDetailsFirmaBLL.Interfaces.IEFServices;
 
 namespace AutoDetailsFirmaAPI
 {
@@ -38,6 +39,8 @@ namespace AutoDetailsFirmaAPI
             });
 
             services.AddMvc();
+            services.AddIdentity<User, Role>()
+                .AddEntityFrameworkStores<AutoDetailContext>();
 
             services.AddTransient<IEFDetailRepository, EFDetailRepository>();
             services.AddTransient<IEFGroupOfDetailRepository, EFGroupOfDetailRepository>();
@@ -59,11 +62,11 @@ namespace AutoDetailsFirmaAPI
             services.AddTransient<IEFProvideService, EFProvideService>();
             services.AddTransient<IEFProviderService, EFProviderService>();
             services.AddTransient<IEFShopService, EFShopService>();
+            services.AddTransient<IUserService, UserRegisterService>();
 
             services.AddTransient<IEFUnitOfWork, EFUnitOfWork>();
 
             services.AddControllersWithViews();
-            services.AddRazorPages();
         }
 
         
@@ -88,7 +91,6 @@ namespace AutoDetailsFirmaAPI
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-                endpoints.MapRazorPages();
 
             });
         }
