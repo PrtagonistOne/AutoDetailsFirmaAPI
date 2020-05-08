@@ -62,7 +62,7 @@ namespace AutoDetailsFirmaAPI
             services.AddTransient<IEFProvideService, EFProvideService>();
             services.AddTransient<IEFProviderService, EFProviderService>();
             services.AddTransient<IEFShopService, EFShopService>();
-            services.AddTransient<IUserService, UserRegisterService>();
+            services.AddTransient<IUserService, UserService>();
 
             services.AddTransient<IEFUnitOfWork, EFUnitOfWork>();
 

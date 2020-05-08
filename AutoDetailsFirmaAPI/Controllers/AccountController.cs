@@ -17,12 +17,46 @@ namespace AutoDetailsFirmaAPI.Controllers
             _userService = userService;
         }
 
-        [HttpGet]
+        [HttpPost]
         [Route("register")]
         public async Task<IActionResult> Register([FromBody] UserRegisterDTO user)
         {
             return Ok(await _userService.Register(user));
         }
-
+        [HttpGet]
+        [Route("login")]
+        public async Task<IActionResult> Login([FromBody] UserLoginDTO user)
+        {
+            return Ok(await _userService.Login(user));
+        }
+        [HttpGet]
+        [Route("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            return Ok(await _userService.Logout());
+        }
+        [HttpPost]
+        [Route("create")]
+        public async Task<IActionResult> Create([FromBody]UserCreateDTO user)
+        {
+            return Ok(await _userService.Create(user));
+        }
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            return Ok(await _userService.Delete(id));
+        }
+        [HttpPut]
+        [Route("edit")]
+        public async Task<IActionResult> Edit([FromBody]UserEditDTO user)
+        {
+            return Ok(await _userService.Edit(user));
+        }
+        [HttpPut]
+        [Route("changePassword")]
+        public async Task<IActionResult> ChangePassword([FromBody]UserChangePasswordDTO user)
+        {
+            return Ok(await _userService.ChangePassword(user));
+        }
     }
 }

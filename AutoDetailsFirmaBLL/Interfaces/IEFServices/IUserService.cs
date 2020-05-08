@@ -9,6 +9,12 @@ namespace AutoDetailsFirmaBLL.Interfaces.IEFServices
     public interface IUserService
     {
         Task<string> Register(UserRegisterDTO dto);
+        Task<string> Create(UserCreateDTO dto);
+        Task<string> Login(UserLoginDTO dto);
+        Task<string> Logout();
+        Task<int> Delete(int id);
+        Task<string> Edit(UserEditDTO dto);
+        Task<string> ChangePassword(UserChangePasswordDTO dto);
 
     }
 }
