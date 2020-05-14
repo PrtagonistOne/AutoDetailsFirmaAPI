@@ -8,6 +8,8 @@ namespace AutoDetailsFirmaBLL.Interfaces.IEFServices
 {
     public interface IRoleService
     {
-          Task Create(RoleDTO role);
+        Task<string> CreateRole(RoleDTO role);
+        Task AppointRole(int id, string role);
+        Task<IList<string>> GetAllRolesByUserID(int id);
     }
 }

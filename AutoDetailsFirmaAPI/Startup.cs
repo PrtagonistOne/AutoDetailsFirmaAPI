@@ -39,8 +39,18 @@ namespace AutoDetailsFirmaAPI
             });
 
             services.AddMvc();
-            services.AddIdentity<User, Role>()
-                .AddEntityFrameworkStores<AutoDetailContext>();
+
+            services.AddIdentity<User, Role>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequiredLength = 4;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireDigit = false;
+
+
+            }).AddEntityFrameworkStores<AutoDetailContext>();
 
             services.AddTransient<IEFDetailRepository, EFDetailRepository>();
             services.AddTransient<IEFGroupOfDetailRepository, EFGroupOfDetailRepository>();
@@ -55,6 +65,7 @@ namespace AutoDetailsFirmaAPI
                 cfg.CreateMap<Provide, ProvideDTO>().ReverseMap();
                 cfg.CreateMap<Provider, ProviderDTO>().ReverseMap();
                 cfg.CreateMap<Shop, ShopDTO>().ReverseMap();
+                cfg.CreateMap<Role, RoleDTO>().ReverseMap();
             }, typeof(Startup));
 
             services.AddTransient<IEFDetailService, EFDetailService>();
@@ -63,6 +74,7 @@ namespace AutoDetailsFirmaAPI
             services.AddTransient<IEFProviderService, EFProviderService>();
             services.AddTransient<IEFShopService, EFShopService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IRoleService, RoleService>();
 
             services.AddTransient<IEFUnitOfWork, EFUnitOfWork>();
 

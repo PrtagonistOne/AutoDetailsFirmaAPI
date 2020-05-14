@@ -14,12 +14,10 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
     public class UserService : IUserService
     {
         private readonly IEFUnitOfWork _eFUnitOfWork;
-        private readonly IMapper _mapper;
 
-        public UserService(IEFUnitOfWork eFUnitOfWork, IMapper mapper)
+        public UserService(IEFUnitOfWork eFUnitOfWork)
         {
             _eFUnitOfWork = eFUnitOfWork;
-            _mapper = mapper;
         }
 
         public async Task<string> Register (UserRegisterDTO user)

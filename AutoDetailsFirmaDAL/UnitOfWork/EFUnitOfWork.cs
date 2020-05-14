@@ -16,7 +16,7 @@ namespace AutoDetailsFirmaDAL.UnitOfWork
         private readonly IEFShopRepository _eFShopRepository;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        public readonly RoleManager<Role> _roleManager;
+        private readonly RoleManager<Role> _roleManager;
         public EFUnitOfWork(IEFDetailRepository eFDetailRepository,
            IEFGroupOfDetailRepository eFGroupOfDetail,
            IEFProvideRepository eFProvideRepository,
