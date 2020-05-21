@@ -16,6 +16,10 @@ using AutoDetailsFirmaDAL.Interfaces;
 using AutoDetailsFirmaDAL.UnitOfWork;
 using Microsoft.AspNetCore.Identity;
 using AutoDetailsFirmaBLL.Interfaces.IEFServices;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System;
 
 namespace AutoDetailsFirmaAPI
 {
@@ -34,12 +38,11 @@ namespace AutoDetailsFirmaAPI
         {
             services.AddDbContext<AutoDetailContext>(cfg =>
             {
-                
                 cfg.UseSqlServer(Configuration.GetConnectionString("Default"), b => b.MigrationsAssembly("AutoDetailsFirmaAPI"));
             });
 
             services.AddMvc();
-
+            //Identity Constraints
             services.AddIdentity<User, Role>(options =>
             {
                 options.User.RequireUniqueEmail = true;
@@ -75,10 +78,29 @@ namespace AutoDetailsFirmaAPI
             services.AddTransient<IEFShopService, EFShopService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IRoleService, RoleService>();
-
             services.AddTransient<IEFUnitOfWork, EFUnitOfWork>();
 
-            services.AddControllersWithViews();
+            services.AddControllers();
+
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.RequireHttpsMetadata = false;
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidIssuer = Configuration["JwtIssuer"],
+                        ValidateAudience = true,
+                        ValidAudience = Configuration["JwtAudience"],
+                        ValidateLifetime = true,
+
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtSecurityKey"])),
+                        ValidateIssuerSigningKey = true,
+                        ClockSkew = TimeSpan.Zero
+                    };
+                });
+
         }
 
         

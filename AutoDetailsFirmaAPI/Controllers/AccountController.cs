@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using AutoDetailsFirmaDAL.Entities;
 using AutoDetailsFirmaBLL.Interfaces.IEFServices;
 using AutoDetailsFirmaBLL.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AutoDetailsFirmaAPI.Controllers
 {
@@ -15,6 +16,7 @@ namespace AutoDetailsFirmaAPI.Controllers
         public AccountController(IUserService userService)
         {
             _userService = userService;
+          
         }
 
         [HttpPost]

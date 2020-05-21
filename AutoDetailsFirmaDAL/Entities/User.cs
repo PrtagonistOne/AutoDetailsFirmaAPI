@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace AutoDetailsFirmaDAL.Entities
 {
@@ -7,7 +8,7 @@ namespace AutoDetailsFirmaDAL.Entities
     {
         public override string Email { get; set; }
         public override string UserName { get; set; }
-        public string Password { get; set; }
         public string PasswordConfirm { get; set; }
+        public string Password { get; set; }
     }
 }

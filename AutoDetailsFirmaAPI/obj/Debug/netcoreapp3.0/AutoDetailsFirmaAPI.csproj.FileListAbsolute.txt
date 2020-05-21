@@ -196,5 +196,9 @@ D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI
 D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Identity.UI.dll
 D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\AutoDetailsFirmaAPI.StaticWebAssets.xml
 D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\obj\Debug\netcoreapp3.0\AutoDetailsFirmaAPI.MvcApplicationPartsAssemblyInfo.cs
-D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\obj\Debug\netcoreapp3.0\AutoDetailsFirmaAPI.MvcApplicationPartsAssemblyInfo.cache
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\System.Security.Cryptography.Pkcs.dll
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\runtimes\win\lib\netcoreapp2.1\System.Security.Cryptography.Pkcs.dll
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Logging.dll
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Tokens.dll
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\System.IdentityModel.Tokens.Jwt.dll
