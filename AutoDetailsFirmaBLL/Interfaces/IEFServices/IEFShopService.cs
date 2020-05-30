@@ -9,7 +9,7 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices
 {
     public interface IEFShopService
     {
-        Task AddShops(ShopDTO shop);
+        Task<string> AddShops(ShopDTO shop);
 
         Task UpdateShops(ShopDTO shop);
 

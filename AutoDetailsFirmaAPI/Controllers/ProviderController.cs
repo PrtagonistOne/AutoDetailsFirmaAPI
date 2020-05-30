@@ -50,8 +50,8 @@ namespace AutoDetailsFirmaAPI.Controllers
         {
             try
             {
-                await _iEFProviderService.AddProviders(value);
-                return StatusCode(201);
+                return Ok(await _iEFProviderService.AddProviders(value));
+                 
             }
             catch
             {

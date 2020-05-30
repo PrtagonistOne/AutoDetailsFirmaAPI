@@ -22,10 +22,8 @@ namespace AutoDetailsFirmaDAL.EF
             base.OnModelCreating(modelBuilder);
 
             //Details
-
             modelBuilder.Entity<Detail>()
                 .HasKey(p => p.Id);
-
             modelBuilder.Entity<Detail>()
                 .HasMany(c => c.Provides)
                 .WithOne(e => e.Detail)
@@ -33,11 +31,8 @@ namespace AutoDetailsFirmaDAL.EF
                 .OnDelete(DeleteBehavior.ClientCascade);
 
             //GroupOfDetails
-
             modelBuilder.Entity<GroupOfDetail>()
                 .HasKey(p => p.Id);
-
-
             modelBuilder.Entity<GroupOfDetail>()
                 .HasMany(c => c.Details)
                 .WithOne(e => e.GroupOfDetail)
@@ -54,9 +49,7 @@ namespace AutoDetailsFirmaDAL.EF
                 .WithOne(o => o.Provide)
                 .HasForeignKey(f => f.ProvideId)
                 .OnDelete(DeleteBehavior.ClientCascade);
-            modelBuilder.Entity<Provide>()
-                .Property(p => p.ArticleOfProvide)
-                .HasMaxLength(7);
+
 
 
             //Providervs
@@ -67,22 +60,12 @@ namespace AutoDetailsFirmaDAL.EF
                 .WithOne(l => l.Provider)
                 .HasForeignKey(l => l.IdOFProvider)
                 .OnDelete(DeleteBehavior.ClientCascade);
-            modelBuilder.Entity<Provider>()
-                .Property(p => p.ProviderName)
-                .HasMaxLength(25);
-            modelBuilder.Entity<Provider>()
-                 .Property(p => p.ProviderAdress)
-                 .HasMaxLength(50);
+
 
             //Shops
             modelBuilder.Entity<Shop>()
                 .HasKey(p => p.Id);
-            modelBuilder.Entity<Shop>()
-                .Property(p => p.ArticleOfShop)
-                .HasMaxLength(7);
-            modelBuilder.Entity<Shop>()
-                .Property(p => p.NameOfShop)
-                .HasMaxLength(25);
+      
 
         }
     }

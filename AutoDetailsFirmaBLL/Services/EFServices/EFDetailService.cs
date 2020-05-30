@@ -5,6 +5,9 @@ using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using AutoDetailsFirmaBLL.Validation;
+using FluentValidation.Results;
+using System;
 
 namespace AutoDetailsFirmaBLL.Services.EFServices
 {
@@ -12,6 +15,8 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
     {
         IEFUnitOfWork _eFUnitOfWork;
         private readonly IMapper _mapper;
+
+
         public EFDetailService(IEFUnitOfWork eFUnitOfWork, IMapper mapper)
         {
             _eFUnitOfWork = eFUnitOfWork;
@@ -31,10 +36,27 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
             var x = await _eFUnitOfWork.EFDetailRepository.Get(id);
             return _mapper.Map<Detail, DetailDTO>(x);
         }
-        public async Task AddDetails(DetailDTO detail)
+        public async Task<string> AddDetails(DetailDTO detail)
         {
+
             var x = _mapper.Map<DetailDTO, Detail>(detail);
+
+            DetailValidator validator = new DetailValidator();
+
+            ValidationResult results = validator.Validate(x);
+            if (!results.IsValid)
+            {
+                foreach (var failure in results.Errors)
+                {
+                    string error = ("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
+                    return error;
+                }
+                return "Error";
+            }
+            else { 
             await _eFUnitOfWork.EFDetailRepository.Add(x);
+                return "Деталь успішно добавлено!";
+            }
 
         }
         public async Task UpdateDetails(DetailDTO detail)

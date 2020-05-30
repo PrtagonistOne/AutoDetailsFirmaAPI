@@ -52,8 +52,7 @@ namespace AutoDetailsFirmaAPI.Controllers
         {
             try
             {
-                await _iEFProvideService.AddProvides(value);
-                return StatusCode(201);
+                return Ok(await _iEFProvideService.AddProvides(value));
             }
             catch
             {

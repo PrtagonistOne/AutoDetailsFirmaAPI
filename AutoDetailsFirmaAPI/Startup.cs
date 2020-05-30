@@ -20,7 +20,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System;
-
+using AutoDetailsFirmaBLL.Validation;
+using FluentValidation;
 namespace AutoDetailsFirmaAPI
 {
     public class Startup
@@ -41,6 +42,14 @@ namespace AutoDetailsFirmaAPI
                 cfg.UseSqlServer(Configuration.GetConnectionString("Default"), b => b.MigrationsAssembly("AutoDetailsFirmaAPI"));
             });
 
+            //fluent
+            services.AddValidatorsFromAssemblyContaining<DetailValidator>();
+            services.AddValidatorsFromAssemblyContaining<GroupOfDetail>();
+            services.AddValidatorsFromAssemblyContaining<ProviderValidator>();
+            services.AddValidatorsFromAssemblyContaining<ProvideValidator>();
+            services.AddValidatorsFromAssemblyContaining<ShopValidator>();
+            services.AddValidatorsFromAssemblyContaining<RoleValidator>();
+
             services.AddMvc();
             //Identity Constraints
             services.AddIdentity<User, Role>(options =>
@@ -51,7 +60,6 @@ namespace AutoDetailsFirmaAPI
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireDigit = false;
-
 
             }).AddEntityFrameworkStores<AutoDetailContext>();
 

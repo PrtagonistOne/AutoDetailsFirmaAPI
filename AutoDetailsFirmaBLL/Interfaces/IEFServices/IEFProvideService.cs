@@ -9,7 +9,7 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices
 {
     public interface IEFProvideService
     {
-        Task AddProvides(ProvideDTO provide);
+        Task<string> AddProvides(ProvideDTO provide);
 
         Task UpdateProvides(ProvideDTO provide);
 

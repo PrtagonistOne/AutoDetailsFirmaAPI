@@ -9,7 +9,7 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices
 {
     public interface IEFGroupOfDetailService
     {
-        Task AddGroupOfDetails(GroupOfDetailDTO groupOfDetail);
+        Task<string> AddGroupOfDetails(GroupOfDetailDTO groupOfDetail);
 
         Task UpdateGroupOfDetails(GroupOfDetailDTO groupOfDetail);
 

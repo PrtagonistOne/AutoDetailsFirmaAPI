@@ -1,8 +1,10 @@
 ﻿using AutoDetailsFirmaBLL.DTO;
+using AutoDetailsFirmaBLL.Validation;
 using AutoDetailsFirmaDAL.Entities;
 using AutoDetailsFirmaDAL.Interfaces;
 using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices;
 using AutoMapper;
+using FluentValidation.Results;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -31,10 +33,27 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
             return _mapper.Map<Provide, ProvideDTO>(x);
 
         }
-        public async Task AddProvides(ProvideDTO provide)
+        public async Task<string> AddProvides(ProvideDTO provide)
         {
             var x = _mapper.Map<ProvideDTO, Provide>(provide);
-            await _eFUnitOfWork.EFProvideRepository.Add(x);
+
+            ProvideValidator validator = new ProvideValidator();
+
+            ValidationResult results = validator.Validate(x);
+            if (!results.IsValid)
+            {
+                foreach (var failure in results.Errors)
+                {
+                    string error = ("Property " + failure.PropertyName + " failed validation. Error was: " + failure.ErrorMessage);
+                    return error;
+                }
+                return "Error";
+            }
+            else
+            {
+                await _eFUnitOfWork.EFProvideRepository.Add(x);
+                return "Поставка успішно добавлено!";
+            }
         }
         public async Task UpdateProvides(ProvideDTO provide)
         {

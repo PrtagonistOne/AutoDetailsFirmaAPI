@@ -27,8 +27,7 @@ namespace AutoDetailsFirmaAPI.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ArticleOfDetail")
-                        .HasColumnType("nvarchar(7)")
-                        .HasMaxLength(7);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DataOfDetail")
                         .HasColumnType("datetime2");
@@ -37,8 +36,7 @@ namespace AutoDetailsFirmaAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("NameOfDetail")
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -55,15 +53,13 @@ namespace AutoDetailsFirmaAPI.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ArticleOfGroupOfDetail")
-                        .HasColumnType("nvarchar(7)")
-                        .HasMaxLength(7);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DataOfGroupOfDetail")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("NotesOfGroupOfDetail")
-                        .HasColumnType("nvarchar(25)")
-                        .HasMaxLength(25);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("PriceOfGroupOfDetail")
                         .HasColumnType("float");
@@ -81,8 +77,7 @@ namespace AutoDetailsFirmaAPI.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ArticleOfProvide")
-                        .HasColumnType("nvarchar(7)")
-                        .HasMaxLength(7);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DataOfProvide")
                         .HasColumnType("datetime2");
@@ -113,12 +108,10 @@ namespace AutoDetailsFirmaAPI.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ProviderAdress")
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProviderName")
-                        .HasColumnType("nvarchar(25)")
-                        .HasMaxLength(25);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProviderPhone")
                         .HasColumnType("nvarchar(max)");
@@ -165,12 +158,10 @@ namespace AutoDetailsFirmaAPI.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ArticleOfShop")
-                        .HasColumnType("nvarchar(7)")
-                        .HasMaxLength(7);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NameOfShop")
-                        .HasColumnType("nvarchar(25)")
-                        .HasMaxLength(25);
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("PriceOfShop")
                         .HasColumnType("float");

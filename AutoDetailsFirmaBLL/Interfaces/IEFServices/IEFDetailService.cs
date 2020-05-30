@@ -6,7 +6,7 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices
 {
     public interface IEFDetailService
     {
-        Task AddDetails(DetailDTO detail);
+        Task<string> AddDetails(DetailDTO detail);
 
         Task UpdateDetails(DetailDTO detail);
 
