@@ -1,6 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using AutoDetailsFirmaBLL.DTO;
 using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices;
+using AutoDetailsFirmaDAL.Paging;
+using AutoDetailsFirmaDAL.Repositories.EFRepositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,26 +17,21 @@ namespace AutoDetailsFirmaAPI.Controllers
     public class DetailController : Controller
     {
         IEFDetailService _iEFDetail;
+
         public DetailController(IEFDetailService eFDetailService)
         {
             _iEFDetail = eFDetailService;
         }
 
-        //GET
+
+        [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetPaged([FromQuery]DetailParameters parameters)
         {
-            try
-            {
-                return Ok(await _iEFDetail.GetAllDetails());
-            }
-            catch
-            {
-                return StatusCode(404);
-            }
+            return Ok(await _iEFDetail.GetPagedDetails(parameters));
         }
 
-         [HttpGet("id/{id}")]
+        [HttpGet("id/{id}")]
          public async Task<IActionResult> Get(int id)
          {
              try
@@ -85,13 +85,6 @@ namespace AutoDetailsFirmaAPI.Controllers
                 return StatusCode(404);
             }
         }
-        //Get Old and New
-        [HttpGet("articleOfDetail/{articleOfDetail}")]
-        public async Task<IActionResult> GetByArticle(string articleOfDetail)
-        {
-           //try catch
-                return Ok(await _iEFDetail.GetArticleByName(articleOfDetail));
-          
-        }
+
     }
 }

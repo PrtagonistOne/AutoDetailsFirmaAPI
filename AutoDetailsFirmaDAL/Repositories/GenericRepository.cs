@@ -6,6 +6,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using AutoDetailsFirmaDAL.EF;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace AutoDetailsFirmaDAL.Repositories
 {
@@ -40,6 +41,7 @@ namespace AutoDetailsFirmaDAL.Repositories
             await _context.SaveChangesAsync();
 
         }
+       
 
     }
 }

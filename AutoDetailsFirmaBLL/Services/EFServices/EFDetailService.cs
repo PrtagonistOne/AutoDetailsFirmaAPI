@@ -8,6 +8,8 @@ using AutoMapper;
 using AutoDetailsFirmaBLL.Validation;
 using FluentValidation.Results;
 using System;
+using PagedList;
+using AutoDetailsFirmaDAL.Paging;
 
 namespace AutoDetailsFirmaBLL.Services.EFServices
 {
@@ -25,9 +27,7 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
         public async Task<IEnumerable<DetailDTO>> GetAllDetails()
         {
             var x = await _eFUnitOfWork.EFDetailRepository.GetAll();
-            //List<DetailDTO> r = new List<DetailDTO>();
-            //foreach (var key in x)
-            //    r.Add(_mapper.Map<Detail, DetailDTO>(key));
+
             List<DetailDTO> r = _mapper.Map<List<DetailDTO>>(x);
             return r;
         }
@@ -68,11 +68,11 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
         {
             await _eFUnitOfWork.EFDetailRepository.Delete(id);
         }
-        public async Task<IEnumerable<DetailDTO>> GetArticleByName(string articleOfDetail)
+        public async Task<IEnumerable<DetailDTO>> GetPagedDetails(DetailParameters parameters)
         {
-            var x = await _eFUnitOfWork.EFDetailRepository.GetArticleByName(articleOfDetail);
-            List<DetailDTO> res = _mapper.Map<List<DetailDTO>>(x);
-            return res;
+            var x = await _eFUnitOfWork.EFDetailRepository.GetPagedDetails(parameters);
+            var result = _mapper.Map<IEnumerable<DetailDTO>>(x);
+            return result;
         }
 
     }

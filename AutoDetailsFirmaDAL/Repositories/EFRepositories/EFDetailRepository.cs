@@ -4,6 +4,8 @@ using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFRepositories;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using AutoDetailsFirmaDAL.Paging;
+using Microsoft.EntityFrameworkCore;
 
 namespace AutoDetailsFirmaDAL.Repositories.EFRepositories
 {
@@ -13,21 +15,16 @@ namespace AutoDetailsFirmaDAL.Repositories.EFRepositories
         public EFDetailRepository(AutoDetailContext context) : base(context)
         {
         }
-
-        public async Task <IEnumerable<Detail>> GetArticleByName(string articleOfDetail)                             
+        public async Task<IEnumerable<Detail>> GetPagedDetails(DetailParameters ownerParameters)
         {
-            if(_context != null)
-            {
+            var details = await _context.Set<Detail>().ToListAsync<Detail>();
 
-                var details = await GetAll();
-                details = details.Where(details => details.ArticleOfDetail == articleOfDetail);               
-
-                return details;
-            }
-
-            return null;
-
+            return details
+                .OrderBy(on => on.NameOfDetail)
+                .Skip((ownerParameters.PageNumber - 1) * ownerParameters.PageSize)
+                .Take(ownerParameters.PageSize)
+                .ToList();
         }
-        
+
     }
 }

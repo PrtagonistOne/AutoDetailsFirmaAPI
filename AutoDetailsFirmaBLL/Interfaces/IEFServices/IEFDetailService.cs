@@ -1,4 +1,6 @@
 ﻿using AutoDetailsFirmaBLL.DTO;
+using AutoDetailsFirmaDAL.Entities;
+using AutoDetailsFirmaDAL.Paging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -13,7 +15,8 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices
         Task DeleteDetails(int id);
         Task <DetailDTO> GetDetailsById(int Id);
         Task <IEnumerable<DetailDTO>> GetAllDetails();
+        Task<IEnumerable<DetailDTO>> GetPagedDetails(DetailParameters ownerParameters);
 
-        Task<IEnumerable<DetailDTO>> GetArticleByName(string articleOfDetail);
+
     }
 }
