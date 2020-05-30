@@ -60,16 +60,11 @@ namespace AutoDetailsFirmaAPI.Controllers
             }
         }
         //POST
+        [HttpPost]
         public async Task<IActionResult> Post([FromBody]GroupOfDetailDTO value)
         {
-            try
-            {
                 return Ok(await _iEFGroupOfDetailService.AddGroupOfDetails(value));
-            }
-            catch
-            {
-                return StatusCode(404);
-            }
+          
         }
 
         //PUT

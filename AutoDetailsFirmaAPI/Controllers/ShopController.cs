@@ -46,17 +46,12 @@ namespace AutoDetailsFirmaAPI.Controllers
             }
         }
         //POST
+        [HttpPost]
         public async Task<IActionResult> Post([FromBody]ShopDTO value)
         {
-            try
-            {
-                await _iEFShopService.AddShops(value);
-                return StatusCode(201);
-            }
-            catch
-            {
-                return StatusCode(404);
-            }
+            
+               return Ok(await _iEFShopService.AddShops(value));
+            
         }
 
         //PUT

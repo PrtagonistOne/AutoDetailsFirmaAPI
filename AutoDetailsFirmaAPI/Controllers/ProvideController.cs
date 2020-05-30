@@ -48,6 +48,7 @@ namespace AutoDetailsFirmaAPI.Controllers
             }
         }
         //POST
+        [HttpPost]
         public async Task<IActionResult> Post([FromBody]ProvideDTO value)
         {
             try
