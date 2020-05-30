@@ -32,32 +32,17 @@ namespace AutoDetailsFirmaDAL.EF
                 .HasForeignKey(e => e.IdOfDetail)
                 .OnDelete(DeleteBehavior.ClientCascade);
 
-            modelBuilder.Entity<Detail>()
-                .Property(p => p.ArticleOfDetail)
-                .HasMaxLength(7);
-            modelBuilder.Entity<Detail>()
-                .Property(p => p.NameOfDetail)
-                .HasMaxLength(20);
-
-
             //GroupOfDetails
 
             modelBuilder.Entity<GroupOfDetail>()
                 .HasKey(p => p.Id);
 
-            modelBuilder.Entity<GroupOfDetail>()
-                .Property(p => p.ArticleOfGroupOfDetail)
-                .HasMaxLength(7);
 
             modelBuilder.Entity<GroupOfDetail>()
                 .HasMany(c => c.Details)
                 .WithOne(e => e.GroupOfDetail)
                 .HasForeignKey(p => p.GroupOfDetailId)
                 .OnDelete(DeleteBehavior.ClientCascade);
-
-            modelBuilder.Entity<GroupOfDetail>()
-                .Property(p => p.NotesOfGroupOfDetail)
-                .HasMaxLength(25);
 
 
 

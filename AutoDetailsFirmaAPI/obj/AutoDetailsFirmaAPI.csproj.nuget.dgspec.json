@@ -18,20 +18,23 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.0"
+          "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.0": {
+          "netcoreapp3.1": {
             "projectReferences": {
               "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaBLL\\AutoDetailsFirmaBLL.csproj": {
                 "projectPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaBLL\\AutoDetailsFirmaBLL.csproj"
               },
               "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj": {
                 "projectPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\AutoDetailsFirmaDAL\\AutoDetailsFirmaDAL.csproj"
+              },
+              "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\UI\\UI.csproj": {
+                "projectPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\UI\\UI.csproj"
               }
             }
           }
@@ -43,7 +46,7 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.0": {
+        "netcoreapp3.1": {
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
@@ -94,16 +97,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.0.1, 3.0.1]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.0.3, 3.0.3]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -222,6 +215,10 @@
               "target": "Package",
               "version": "[9.0.0, )"
             },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[8.6.2, )"
+            },
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
               "version": "[2.2.0, )"
@@ -256,6 +253,71 @@
             }
           ],
           "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\UI\\UI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\UI\\UI.csproj",
+        "projectName": "UI",
+        "projectPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\UI\\UI.csproj",
+        "packagesPath": "C:\\Users\\playe\\.nuget\\packages\\",
+        "outputPath": "D:\\Универ\\2 Курс 4 семестр\\ООП\\A project\\AutoDetailsFirmaAPI\\UI\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\playe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.0.1, 3.0.1]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.0.3, 3.0.3]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

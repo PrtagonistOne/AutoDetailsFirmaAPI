@@ -202,3 +202,11 @@ D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI
 D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Tokens.dll
 D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.JsonWebTokens.dll
 D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\IdentityModel.dll
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\IdentityModel.AspNetCore.OAuth2Introspection.dll
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\IdentityServer4.AccessTokenValidation.dll
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Protocols.dll
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\obj\Debug\netcoreapp3.0\AutoDetailsFirmaAPI.MvcApplicationPartsAssemblyInfo.cs
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaAPI\obj\Debug\netcoreapp3.0\AutoDetailsFirmaAPI.MvcApplicationPartsAssemblyInfo.cache
