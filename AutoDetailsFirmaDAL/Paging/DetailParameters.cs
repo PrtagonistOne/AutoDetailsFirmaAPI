@@ -4,7 +4,8 @@ using System.Text;
 
 namespace AutoDetailsFirmaDAL.Paging
 {
-    public class DetailParameters : GenericPager
+    public class DetailParameters : QueryStringParameters
     {
+
     }
 }

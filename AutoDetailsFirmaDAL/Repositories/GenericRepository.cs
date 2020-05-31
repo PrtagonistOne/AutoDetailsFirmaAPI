@@ -7,15 +7,18 @@ using Microsoft.EntityFrameworkCore;
 using AutoDetailsFirmaDAL.EF;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace AutoDetailsFirmaDAL.Repositories
 {
     public class GenericRepository<TEntity, TId> : IGenericRepository<TEntity, TId> where TEntity : class, IEntity<TId>
     {
         protected readonly AutoDetailContext _context;
+        protected DbSet<TEntity> _dbSet;
         public GenericRepository(AutoDetailContext context)
         {
             _context = context;
+            _dbSet = _context.Set<TEntity>();
         }
         public async Task<IEnumerable<TEntity>>GetAll()
         {
@@ -41,7 +44,10 @@ namespace AutoDetailsFirmaDAL.Repositories
             await _context.SaveChangesAsync();
 
         }
-       
+        public IQueryable<TEntity> FindByCondition(Expression<Func<TEntity, bool>> expression)
+        {
+            return _dbSet.Where(expression);
+        }
 
     }
 }

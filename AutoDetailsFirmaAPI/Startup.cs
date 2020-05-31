@@ -22,6 +22,9 @@ using System.Text;
 using System;
 using AutoDetailsFirmaBLL.Validation;
 using FluentValidation;
+using AutoDetailsFirmaDAL.Paging.Interfaces;
+using AutoDetailsFirmaDAL.Paging;
+
 namespace AutoDetailsFirmaAPI
 {
     public class Startup
@@ -41,6 +44,9 @@ namespace AutoDetailsFirmaAPI
             {
                 cfg.UseSqlServer(Configuration.GetConnectionString("Default"), b => b.MigrationsAssembly("AutoDetailsFirmaAPI"));
             });
+
+            //sorting
+            services.AddScoped<ISortHelper<GroupOfDetail>, SortHelper<GroupOfDetail>>();
 
             //fluent
             services.AddValidatorsFromAssemblyContaining<DetailValidator>();

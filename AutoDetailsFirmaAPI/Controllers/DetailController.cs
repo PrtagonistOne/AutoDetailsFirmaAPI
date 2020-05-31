@@ -7,6 +7,7 @@ using AutoDetailsFirmaDAL.Paging;
 using AutoDetailsFirmaDAL.Repositories.EFRepositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -28,6 +29,7 @@ namespace AutoDetailsFirmaAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> GetPaged([FromQuery]DetailParameters parameters)
         {
+            
             return Ok(await _iEFDetail.GetPagedDetails(parameters));
         }
 

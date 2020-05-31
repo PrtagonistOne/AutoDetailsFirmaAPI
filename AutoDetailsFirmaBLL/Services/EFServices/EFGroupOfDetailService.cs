@@ -7,6 +7,8 @@ using AutoMapper;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using FluentValidation.Results;
+using AutoDetailsFirmaDAL.Paging;
+
 namespace AutoDetailsFirmaBLL.Services.EFServices
 {
     public class EFGroupOfDetailService : IEFGroupOfDetailService
@@ -66,11 +68,11 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
         {
             await _eFUnitOfWork.EFGroupOfDetailRepository.Delete(id);
         }
-        public async Task<GroupOfDetailDTO> GetGroupByName(string id)
+        public async Task<PagedList<GroupOfDetailDTO>> GetPagedGroupOfDetails(GroupOfDetailParameters parameters)
         {
-            var x = await _eFUnitOfWork.EFGroupOfDetailRepository.GetGroupByName(id);
-            GroupOfDetailDTO res = _mapper.Map<GroupOfDetail, GroupOfDetailDTO>(x);
-            return res;
+            var x = await _eFUnitOfWork.EFGroupOfDetailRepository.GetPagedGroupOfDetails(parameters);
+            var result = _mapper.Map<PagedList<GroupOfDetailDTO>>(x);
+            return result;
         }
     }
 }

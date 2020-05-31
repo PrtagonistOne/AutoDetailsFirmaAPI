@@ -6,7 +6,9 @@ using AutoDetailsFirmaBLL.DTO;
 using AutoDetailsFirmaDAL.EF;
 using AutoDetailsFirmaDAL.Entities;
 using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices;
+using AutoDetailsFirmaDAL.Paging;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -23,18 +25,17 @@ namespace AutoDetailsFirmaAPI.Controllers
 
         //GET
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery]GroupOfDetailParameters parameters)
         {
-            try
-            {
-                return Ok(await _iEFGroupOfDetailService.GetAllGroupOfDetails());
-            }
-            catch
-            {
-                return StatusCode(404);
-            }
-        }
+            
+                if (!parameters.ValidPriceRange)
+                {
+                    return BadRequest("Invalid range!");
+                }
 
+                return Ok(await _iEFGroupOfDetailService.GetPagedGroupOfDetails(parameters));
+
+        }
          [HttpGet("id/{id}")]
         public async Task<IActionResult> Get(int id)
         {
@@ -47,18 +48,7 @@ namespace AutoDetailsFirmaAPI.Controllers
                 return StatusCode(404);
             }
         }
-        [HttpGet("articleOfGroupOfDetail/{articleOfGroupOfDetail}")]
-        public async Task<IActionResult> GetByName(string articleOfGroupOfDetail)
-        {
-            try
-            {
-                return Ok(await _iEFGroupOfDetailService.GetGroupByName(articleOfGroupOfDetail));
-            }
-            catch
-            {
-                return StatusCode(404);
-            }
-        }
+
         //POST
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]GroupOfDetailDTO value)

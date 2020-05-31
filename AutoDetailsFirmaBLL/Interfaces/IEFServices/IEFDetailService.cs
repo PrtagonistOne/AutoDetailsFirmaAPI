@@ -15,7 +15,7 @@ namespace AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices
         Task DeleteDetails(int id);
         Task <DetailDTO> GetDetailsById(int Id);
         Task <IEnumerable<DetailDTO>> GetAllDetails();
-        Task<IEnumerable<DetailDTO>> GetPagedDetails(DetailParameters ownerParameters);
+        Task<PagedList<DetailDTO>> GetPagedDetails(DetailParameters ownerParameters);
 
 
     }

@@ -15,15 +15,15 @@ namespace AutoDetailsFirmaDAL.Repositories.EFRepositories
         public EFDetailRepository(AutoDetailContext context) : base(context)
         {
         }
-        public async Task<IEnumerable<Detail>> GetPagedDetails(DetailParameters ownerParameters)
+        public IQueryable<Detail> FindAll()
         {
-            var details = await _context.Set<Detail>().ToListAsync<Detail>();
-
-            return details
-                .OrderBy(on => on.NameOfDetail)
-                .Skip((ownerParameters.PageNumber - 1) * ownerParameters.PageSize)
-                .Take(ownerParameters.PageSize)
-                .ToList();
+            return _context.Set<Detail>();
+        }
+        public async Task<PagedList<Detail>> GetPagedDetails(DetailParameters ownerParameters)
+        {
+            return await PagedList<Detail>.ToPagedList(FindAll().OrderBy(on => on.Id),
+        ownerParameters.PageNumber,
+        ownerParameters.PageSize);
         }
 
     }
