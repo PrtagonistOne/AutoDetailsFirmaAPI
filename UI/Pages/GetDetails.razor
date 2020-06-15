@@ -1,0 +1,138 @@
+﻿@using System.Net.Http;
+@using AutoDetailsFirmaBLL.DTO;
+@using AutoDetailsFirmaBLL.Services.EFServices;
+@using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices;
+@using System.Text.Json;
+@using System.Net.Http.Formatting;
+@using Newtonsoft.Json;
+@using AutoDetailsFirmaBLL.Validation;
+@page "/api/Group"
+@page "/api/Group/{id}"
+@using Microsoft.AspNetCore.Components;
+@inject IEFDetailService detailService;
+
+
+<h1>Details</h1>
+
+
+<hr />
+<style>
+    table {
+        width: 25%; 
+        background: white; 
+        color: white; 
+        border-spacing: 1px; 
+    }
+
+    td, th {
+        background: maroon; 
+        padding: 5px; 
+    }
+</style>
+@if (detailList.Any())
+{
+<table>
+    <tr> <th>ID</th> <th>Group of Detail ID</th> <th>Name of Detail</th> <th>Date of Detail</th><th>Article Of Detail</th></tr>
+
+    
+
+    @foreach (var detail in detailList)
+    {
+
+        /*<p><strong>ID</strong> @detail.Id</p>
+        <p><strong>Group Of Detail Id</strong> @detail.GroupOfDetailId</p>
+        <p><strong>Name Of Detail</strong> @detail.NameOfDetail</p>
+        <p><strong>Data Of Detail</strong> @detail.DataOfDetail</p>
+        <p><strong>Article Of Detail</strong> @detail.ArticleOfDetail</p>*/
+
+<tr><td>@detail.Id</td><td>@detail.GroupOfDetailId</td><td>@detail.NameOfDetail</td><td>@detail.DataOfDetail</td><td>@detail.ArticleOfDetail</td><td> <button> <a class="btn btn-danger btn-sm" @onclick="@(() => DeleteDetail(detail.Id))">Delete</a> </button> </td></tr>
+
+       // <button> <a class="btn btn-danger btn-sm" @onclick="@(() => DeleteDetail(detail.Id))">del</a> </button>
+
+
+    }
+</table>
+
+
+    <br />
+
+}
+else
+{
+    <p>No Contacts Found</p>
+}
+
+<div class="modal-body">
+    <EditForm Model="@detailDTO" OnValidSubmit="@HandleValidSubmit">
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <form>
+
+            <label>Group Of Detail Id</label>
+            <InputNumber class="form-control" @bind-Value="@detailDTO.GroupOfDetailId" /> <br><br>
+
+            <label>Name Of Detail</label>
+            <InputText class="form-control" @bind-Value="@detailDTO.NameOfDetail" /> <br><br>
+
+            <label>Article Of Detail</label>
+            <InputText class="form-control" @bind-Value="@detailDTO.ArticleOfDetail" /> <br><br>
+
+            <label>Data Of Detail</label>
+            <InputDate class="form-control" @bind-Value="@detailDTO.DataOfDetail" /><br>
+
+        </form>
+
+
+        <button type="submit" class="btn btn-primary" onClick="window.location.href=window.location.href">Submit</button>
+    </EditForm>
+</div>
+
+
+
+
+
+
+
+@code {
+
+
+
+    @functions {
+        private List<AutoDetailsFirmaDAL.Entities.Detail> detailList = new List<AutoDetailsFirmaDAL.Entities.Detail>();
+
+        protected override async Task OnInitializedAsync() => await GetDetail();
+
+        HttpClient httpClient = new HttpClient();
+
+
+        private async Task GetDetail() => detailList = await httpClient.GetJsonAsync<List<AutoDetailsFirmaDAL.Entities.Detail>>("https://localhost:44367/api/Detail/paged");
+        // DataAccessLayer.Entities.Group group = new DataAccessLayer.Entities.Group();
+        private async void DeleteDetail(int id)
+        {
+            string baseUrl = "https://localhost:44367";
+            string endpoint = $"{baseUrl}/api/Detail/{id}";
+
+            //await httpClient.SendJsonAsync(HttpMethod.Delete, endpoint,);
+            await httpClient.DeleteAsync(endpoint);
+        }
+
+        DetailDTO detailDTO { get; set; } = new DetailDTO();
+
+
+        private async void HandleValidSubmit()
+        {
+            try
+            {
+                await detailService.AddDetails(detailDTO);
+            }
+            catch
+            {
+
+            }
+        }
+
+
+    }
+}

@@ -24,6 +24,8 @@ using AutoDetailsFirmaBLL.Validation;
 using FluentValidation;
 using AutoDetailsFirmaDAL.Paging.Interfaces;
 using AutoDetailsFirmaDAL.Paging;
+using Microsoft.AspNetCore.Mvc.Razor;
+using FluentValidation.AspNetCore;
 
 namespace AutoDetailsFirmaAPI
 {
@@ -94,7 +96,11 @@ namespace AutoDetailsFirmaAPI
             services.AddTransient<IRoleService, RoleService>();
             services.AddTransient<IEFUnitOfWork, EFUnitOfWork>();
 
-            services.AddControllers();
+            services.AddServerSideBlazor();
+            services.AddControllersWithViews();
+            services.AddMvc(setup => {
+                //...mvc setup...
+            }).AddFluentValidation();
 
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -115,6 +121,10 @@ namespace AutoDetailsFirmaAPI
                     };
                 });
 
+
+            services.AddServerSideBlazor();
+            services.AddControllersWithViews();
+            
         }
 
         
@@ -139,8 +149,11 @@ namespace AutoDetailsFirmaAPI
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+                endpoints.MapDefaultControllerRoute();
+                endpoints.MapBlazorHub();
+                endpoints.MapRazorPages();
             });
+
         }
     }
 }

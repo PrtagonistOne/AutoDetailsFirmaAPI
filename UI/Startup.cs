@@ -1,9 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using AutoDetailsFirmaBLL.Services.EFServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.Server;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
@@ -28,7 +33,24 @@ namespace UI
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
+
+            services.AddAuthorizationCore();
+            //services.AddScoped<IAuthService, AuthService>();
+
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+            var supportedCultures = new List<CultureInfo> { new CultureInfo("en"), new CultureInfo("ru") };
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("en");
+                options.SupportedUICultures = supportedCultures;
+            });
+
+            services.AddHttpClient<EFDetailService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:44367");
+            });
+
+            //44367
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,14 +66,17 @@ namespace UI
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+            app.UseRequestLocalization();
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });

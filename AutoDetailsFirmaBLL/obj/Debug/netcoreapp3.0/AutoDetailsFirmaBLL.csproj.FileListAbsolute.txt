@@ -20,3 +20,4 @@ D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI
 D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaBLL\obj\Debug\netcoreapp3.0\AutoDetailsFirmaBLL.csproj.CopyComplete
 D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaBLL\obj\Debug\netcoreapp3.0\AutoDetailsFirmaBLL.dll
 D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaBLL\obj\Debug\netcoreapp3.0\AutoDetailsFirmaBLL.pdb
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaBLL\obj\Debug\netcoreapp3.0\AutoDetailsFirmaBLL.csproj.CoreCompileInputs.cache

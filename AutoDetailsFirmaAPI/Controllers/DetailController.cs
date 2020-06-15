@@ -26,11 +26,21 @@ namespace AutoDetailsFirmaAPI.Controllers
 
 
         [AllowAnonymous]
-        [HttpGet]
+        [HttpGet("paged")]
         public async Task<IActionResult> GetPaged([FromQuery]DetailParameters parameters)
         {
             
             return Ok(await _iEFDetail.GetPagedDetails(parameters));
+        }
+     
+        [HttpGet]
+        public IActionResult GetView()
+        {
+            try
+            {
+                return View();
+            }
+            catch { return StatusCode(404); }
         }
 
         [HttpGet("id/{id}")]

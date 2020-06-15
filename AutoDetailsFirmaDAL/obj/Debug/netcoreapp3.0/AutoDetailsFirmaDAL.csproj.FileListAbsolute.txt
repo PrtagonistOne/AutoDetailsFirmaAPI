@@ -14,3 +14,4 @@ D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI
 D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaDAL\obj\Debug\netcoreapp3.0\AutoDetailsFirmaDAL.AssemblyInfo.cs
 D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaDAL\obj\Debug\netcoreapp3.0\AutoDetailsFirmaDAL.dll
 D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaDAL\obj\Debug\netcoreapp3.0\AutoDetailsFirmaDAL.pdb
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\AutoDetailsFirmaDAL\obj\Debug\netcoreapp3.0\AutoDetailsFirmaDAL.csproj.CoreCompileInputs.cache
