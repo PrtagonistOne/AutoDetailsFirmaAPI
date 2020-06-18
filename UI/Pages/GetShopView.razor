@@ -1,0 +1,179 @@
+﻿@using System.Net.Http;
+@using AutoDetailsFirmaBLL.DTO;
+@using AutoDetailsFirmaBLL.Services.EFServices;
+@using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices;
+@using System.Text.Json;
+@using System.Net.Http.Formatting;
+@using Newtonsoft.Json;
+@using AutoDetailsFirmaBLL.Validation;
+@using FluentValidation.Results;
+@page "/api/Shop"
+@page "/api/Shop/{id}"
+@using Microsoft.AspNetCore.Components;
+@inject IEFShopService shopService;
+
+
+<h1>Магазин</h1>
+
+
+<hr />
+<style>
+    ul.nav {
+        margin-left: 10px;
+        padding-left: 10px;
+        list-style: none;
+    }
+
+    .nav li {
+        display: inline;
+    }
+
+    ul.nav a {
+        display: inline-block;
+        width: 10em;
+        padding: 10px;
+        background-color: #f4f4f4;
+        border: 1px dashed #333;
+        text-decoration: none;
+        color: #333;
+        text-align: center;
+    }
+
+        ul.nav a:hover {
+            background-color: #333;
+            color: #f4f4f4;
+        }
+        ul.nav a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+</style>
+<style>
+    table {
+        width: 25%;
+        background: white;
+        color: white;
+        border-spacing: 1px;
+        align-content: center;
+    }
+
+    td, th {
+        background: maroon;
+        padding: 10px;
+        align-content: center;
+    }
+</style>
+@if (shopList.Any())
+{
+<ul class="nav">
+    <li><a href="https://localhost:44367/api/Provider">Постачальник</a></li>
+    <li><a href="https://localhost:44367/api/GroupOfDetail">Група деталі</a></li>
+    <li><a href="https://localhost:44367/api/Detail">Деталі</a></li>
+    <li><a href="https://localhost:44367/api/Provide">Поставки</a></li>
+    <li><a class="active" href="https://localhost:44367/api/Shop">Магазин</a></li>
+</ul>
+    <table align="center">
+        <tr> <th>ID</th> <th>ID Поставки</th> <th>Артикул магазину</th> <th>Ціна продажі магазину</th><th>Назва магазину</th></tr>
+
+
+
+        @foreach (var shop in shopList)
+        {
+
+            /*<p><strong>ID</strong> @detail.Id</p>
+            <p><strong>Group Of Detail Id</strong> @detail.GroupOfDetailId</p>
+            <p><strong>Name Of Detail</strong> @detail.NameOfDetail</p>
+            <p><strong>Data Of Detail</strong> @detail.DataOfDetail</p>
+            <p><strong>Article Of Detail</strong> @detail.ArticleOfDetail</p>*/
+             
+            <tr><td>@shop.Id</td><td>@shop.Provide Id</td><td>@shop.ArticleOfShop</td><td>@shop.PriceOfShop</td><td>@shop.NameOfShop</td><td> <button> <a class="btn btn-danger btn-sm" @onclick="@(() => DeleteShop(shop.Id))">Delete</a> </button> </td></tr>
+
+            // <button> <a class="btn btn-danger btn-sm" @onclick="@(() => DeleteDetail(detail.Id))">del</a> </button>
+
+
+        }
+    </table>
+
+
+    <br />
+
+}
+else
+{
+    <p>No Contacts Found</p>
+}
+
+<div class="modal-body">
+    <EditForm Model="@shopDTO" OnValidSubmit="@HandleValidSubmit">
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <form>
+
+            <label>ID Поставки: </label>
+            <InputNumber class="form-control" @bind-Value="@shopDTO.ProvideId" /> <br><br>
+
+            <label>Артикул магазину: </label>
+            <InputText class="form-control" @bind-Value="@shopDTO.ArticleOfShop" /> <br><br>
+
+            <label>Ціна продажі магазину: </label>
+            <InputNumber class="form-control" @bind-Value="@shopDTO.PriceOfShop" /> <br><br>
+
+            <label>Назва магазину: </label>
+            <InputText class="form-control" @bind-Value="@shopDTO.NameOfShop" /><br>
+
+        </form>
+
+
+        <button type="submit" class="btn btn-primary" onClick="window.location.href=window.location.href">Submit</button>
+
+    </EditForm>
+</div>
+
+
+
+
+
+
+
+
+@code {
+    
+
+    @functions {
+        private List<AutoDetailsFirmaDAL.Entities.Shop> shopList = new List<AutoDetailsFirmaDAL.Entities.Shop>();
+
+        protected override async Task OnInitializedAsync() => await GetShops();
+
+        HttpClient httpClient = new HttpClient();
+
+
+        private async Task GetShops() => shopList = await httpClient.GetJsonAsync<List<AutoDetailsFirmaDAL.Entities.Shop>>("https://localhost:44367/api/Shop/paged");
+        private async void DeleteShop(int id)
+        {
+            string baseUrl = "https://localhost:44367";
+            string endpoint = $"{baseUrl}/api/Shop/{id}";
+
+            await httpClient.DeleteAsync(endpoint);
+        }
+
+        ShopDTO shopDTO { get; set; } = new ShopDTO();
+
+
+        private async void HandleValidSubmit()
+        {
+
+            try
+            {
+                await shopService.AddShops(shopDTO);
+            }
+            catch
+            {
+
+            }
+        }
+
+
+    }
+}

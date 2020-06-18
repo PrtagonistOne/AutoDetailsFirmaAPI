@@ -20,9 +20,15 @@ namespace AutoDetailsFirmaAPI.Controllers
         {
             _iEFProvideService = iEFProvideService;
         }
-
-        //GET
         [HttpGet]
+        public IActionResult GetProvideView()
+        {
+
+            return View();
+
+        }
+        //GET
+        [HttpGet("paged")]
         public async Task<IActionResult> Get()
         {
             try

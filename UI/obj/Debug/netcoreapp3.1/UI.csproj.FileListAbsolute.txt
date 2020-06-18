@@ -151,3 +151,15 @@ D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI
 D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\UI\obj\Debug\netcoreapp3.1\Razor\Shared\NavMenu.razor.g.cs
 D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\UI\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\GetDetails.razor.g.cs
 D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\UI\obj\Debug\netcoreapp3.1\Razor\Pages\GetDetails.razor.g.cs
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\UI\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\GetGroupOfDetails.razor.g.cs
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\UI\obj\Debug\netcoreapp3.1\Razor\Pages\GetGroupOfDetails.razor.g.cs
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\UI\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\GetGroupView.cshtml.g.cs
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\UI\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\GetProvideView.razor.g.cs
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\UI\obj\Debug\netcoreapp3.1\Razor\Pages\GetProvideView.razor.g.cs
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\UI\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\GetProvideView.cshtml.g.cs
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\UI\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\GetProviderView.razor.g.cs
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\UI\obj\Debug\netcoreapp3.1\Razor\Pages\GetProviderView.razor.g.cs
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\UI\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\GetProviderView.cshtml.g.cs
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\UI\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\GetShopView.razor.g.cs
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\UI\obj\Debug\netcoreapp3.1\Razor\Pages\GetShopView.razor.g.cs
+D:\Универ\2 Курс 4 семестр\ООП\A project\AutoDetailsFirmaAPI\UI\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\GetShopView.cshtml.g.cs

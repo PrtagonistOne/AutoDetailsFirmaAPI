@@ -1,0 +1,174 @@
+﻿@using System.Net.Http;
+@using AutoDetailsFirmaBLL.DTO;
+@using AutoDetailsFirmaBLL.Services.EFServices;
+@using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices;
+@using System.Text.Json;
+@using System.Net.Http.Formatting;
+@using Newtonsoft.Json;
+@using AutoDetailsFirmaBLL.Validation;
+@using FluentValidation.Results;
+@page "/api/GroupOfDetail"
+@page "/api/GroupOfDetail/{id}"
+@using Microsoft.AspNetCore.Components;
+@inject IEFGroupOfDetailService groupOfDetailService;
+
+
+<h1>Група Деталі</h1>
+
+
+<hr />
+<style>
+    ul.nav {
+        margin-left: 0px;
+        padding-left: 0px;
+        list-style: none;
+    }
+
+    .nav li {
+        display: inline;
+    }
+
+    ul.nav a {
+        display: inline-block;
+        width: 10em;
+        padding: 10px;
+        background-color: #f4f4f4;
+        border: 1px dashed #333;
+        text-decoration: none;
+        color: #333;
+        text-align: center;
+    }
+
+        ul.nav a:hover {
+            background-color: #333;
+            color: #f4f4f4;
+        }
+        ul.nav a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+</style>
+<style>
+    table {
+        width: 25%;
+        background: white;
+        color: white;
+        border-spacing: 1px;
+    }
+
+    td, th {
+        background: maroon;
+        padding: 10px;
+    }
+</style>
+@if (groupOfDetailList.Any())
+{
+<ul class="nav">
+    <li><a href="https://localhost:44367/api/Provider">Постачальник</a></li>
+    <li><a class="active" href="https://localhost:44367/api/GroupOfDetail">Група Деталі</a></li>
+    <li><a href="https://localhost:44367/api/Detail">Деталі</a></li>
+    <li><a href="https://localhost:44367/api/Provide">Поставки</a></li>
+    <li><a href="https://localhost:44367/api/Shop">Магазин</a></li>
+
+</ul>
+
+    <table align="center">
+        <tr> <th>ID</th> <th>Артикул Групи Деталі</th> <th>Ціна Групи Деталі</th> <th>Опис Групи Деталі</th><th>Дата Групи Деталі</th></tr>
+
+
+
+        @foreach (var groupOfDetail in groupOfDetailList)
+        {
+
+
+
+            <tr><td>@groupOfDetail.Id</td><td>@groupOfDetail.ArticleOfGroupOfDetail</td><td>@groupOfDetail.PriceOfGroupOfDetail</td><td>@groupOfDetail.NotesOfGroupOfDetail</td><td>@groupOfDetail.DataOfGroupOfDetail</td><td> <button> <a class="btn btn-danger btn-sm" @onclick="@(() => DeteleGroupOfDetail(groupOfDetail.Id))">Delete</a> </button> </td></tr>
+
+
+
+        }
+    </table>
+
+
+    <br />
+
+}
+else
+{
+    <p>No Contacts Found</p>
+}
+
+<div class="modal-body">
+    <EditForm Model="@groupOfDetailDTO" OnValidSubmit="@HandleValidSubmit">
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <form>
+
+            <label>Артикул Групи Деталі: </label>
+            <InputText class="form-control" @bind-Value="@groupOfDetailDTO.ArticleOfGroupOfDetail" /> <br><br>
+
+            <label>Ціна Групи Деталі: </label>
+            <InputNumber class="form-control" @bind-Value="@groupOfDetailDTO.PriceOfGroupOfDetail" /> <br><br>
+
+            <label>Опис Групи Деталі: </label>
+            <InputText class="form-control" @bind-Value="@groupOfDetailDTO.NotesOfGroupOfDetail" /> <br><br>
+
+            <label>Дата Групи Деталі: </label>
+            <InputDate class="form-control" @bind-Value="@groupOfDetailDTO.DataOfGroupOfDetail" /><br>
+
+        </form>
+
+
+        <button type="submit" class="btn btn-primary" onClick="window.location.href=window.location.href">Submit</button>
+
+    </EditForm>
+</div>
+
+
+
+
+
+
+
+@code {
+
+    
+    @functions {
+        private List<AutoDetailsFirmaDAL.Entities.GroupOfDetail> groupOfDetailList = new List<AutoDetailsFirmaDAL.Entities.GroupOfDetail>();
+
+        protected override async Task OnInitializedAsync() => await GetGroupOfDetail();
+
+        HttpClient httpClient = new HttpClient();
+
+
+        private async Task GetGroupOfDetail() => groupOfDetailList = await httpClient.GetJsonAsync<List<AutoDetailsFirmaDAL.Entities.GroupOfDetail>>("https://localhost:44367/api/GroupOfDetail/paged");
+
+        private async void DeteleGroupOfDetail(int id)
+        {
+            string baseUrl = "https://localhost:44367";
+            string endpoint = $"{baseUrl}/api/GroupOfDetail/{id}";
+
+            await httpClient.DeleteAsync(endpoint);
+        }
+
+        GroupOfDetailDTO groupOfDetailDTO { get; set; } = new GroupOfDetailDTO();
+
+
+        private async void HandleValidSubmit()
+        {
+
+            try
+            {
+                await groupOfDetailService.AddGroupOfDetails(groupOfDetailDTO);
+            }
+            catch
+            {
+
+            }
+        }
+
+
+    }
+}

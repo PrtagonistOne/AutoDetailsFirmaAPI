@@ -1,0 +1,173 @@
+﻿@using System.Net.Http;
+@using AutoDetailsFirmaBLL.DTO;
+@using AutoDetailsFirmaBLL.Services.EFServices;
+@using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices;
+@using System.Text.Json;
+@using System.Net.Http.Formatting;
+@using Newtonsoft.Json;
+@using AutoDetailsFirmaBLL.Validation;
+@using FluentValidation.Results;
+@page "/api/Provide"
+@page "/api/Provide/{id}"
+@using Microsoft.AspNetCore.Components;
+@inject IEFProviderService providerService;
+
+
+<h1>Постачальник</h1>
+
+
+<hr />
+<style>
+    ul.nav {
+        margin-left: 0px;
+        padding-left: 0px;
+        list-style: none;
+    }
+
+    .nav li {
+        display: inline;
+    }
+
+    ul.nav a {
+        display: inline-block;
+        width: 10em;
+        padding: 10px;
+        background-color: #f4f4f4;
+        border: 1px dashed #333;
+        text-decoration: none;
+        color: #333;
+        text-align: center;
+    }
+
+        ul.nav a:hover {
+            background-color: #333;
+            color: #f4f4f4;
+        }
+        ul.nav a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+</style>
+<style>
+    table {
+        width: 25%;
+        background: white;
+        color: white;
+        border-spacing: 1px;
+    }
+
+    td, th {
+        background: maroon;
+        padding: 10px;
+    }
+</style>
+@if (providerList.Any())
+{
+<ul class="nav">
+    <li><a class="active" href="https://localhost:44367/api/Provider">Постачальник</a></li>
+    <li><a href="https://localhost:44367/api/GroupOfDetail">Група деталі</a></li>
+    <li><a href="https://localhost:44367/api/Detail">Деталі</a></li>
+    <li><a href="https://localhost:44367/api/Provide">Поставка</a></li>
+    <li><a href="https://localhost:44367/api/Shop">Магазин</a></li>
+
+</ul>
+
+    <table align="center">
+        <tr> <th>ID</th> <th>Ім'я Постачальника</th> <th>Адреса Постачальника</th> <th>Телефон Провайдера</th></tr>
+
+
+
+        @foreach (var provider in providerList)
+        {
+
+
+
+            <tr><td>@provider.Id</td><td>@provider.ProviderName</td><td>@provider.ProviderAdress</td> <td>@provider.ProviderPhone</td><td> <button> <a class="btn btn-danger btn-sm" @onclick="@(() => DeteleProvider(provider.Id))">Delete</a> </button> </td></tr>
+
+
+
+        }
+    </table>
+
+
+    <br />
+
+}
+else
+{
+    <p>No Contacts Found</p>
+}
+
+<div class="modal-body">
+    <EditForm Model="@providerDTO" OnValidSubmit="@HandleValidSubmit">
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <form>
+
+            <label>Ім'я Постачальника: </label>
+            <InputText class="form-control" @bind-Value="@providerDTO.ProviderName" /> <br><br>
+
+            <label>Адреса Постачальника: </label>
+            <InputText class="form-control" @bind-Value="@providerDTO.ProviderAdress" /> <br><br>
+
+            <label>Телефон Провайдера: </label>
+            <InputText class="form-control" @bind-Value="@providerDTO.ProviderPhone" /><br>
+
+
+
+        </form>
+
+
+        <button type="submit" class="btn btn-primary" onClick="window.location.href=window.location.href">Submit</button>
+
+    </EditForm>
+</div>
+
+
+
+
+
+
+
+@code {
+
+    
+    @functions {
+        private List<AutoDetailsFirmaDAL.Entities.Provider> providerList = new List<AutoDetailsFirmaDAL.Entities.Provider>();
+
+        protected override async Task OnInitializedAsync() => await GetProvider();
+
+        HttpClient httpClient = new HttpClient();
+
+
+        private async Task GetProvider() => providerList = await httpClient.GetJsonAsync<List<AutoDetailsFirmaDAL.Entities.Provider>>("https://localhost:44367/api/Provider/paged");
+
+        private async void DeteleProvider(int id)
+        {
+            string baseUrl = "https://localhost:44367";
+            string endpoint = $"{baseUrl}/api/Provider/{id}";
+
+            await httpClient.DeleteAsync(endpoint);
+        }
+
+        ProviderDTO providerDTO { get; set; } = new ProviderDTO();
+
+
+        private async void HandleValidSubmit()
+        {
+
+            try
+            {
+                await providerService.AddProviders(providerDTO);
+            }
+            catch
+            {
+
+            }
+        }
+
+
+    }
+}

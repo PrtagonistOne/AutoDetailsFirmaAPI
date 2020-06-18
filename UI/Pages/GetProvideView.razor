@@ -1,0 +1,176 @@
+﻿@using System.Net.Http;
+@using AutoDetailsFirmaBLL.DTO;
+@using AutoDetailsFirmaBLL.Services.EFServices;
+@using AutoDetailsFirmaDAL.Interfaces.EFInterfaces.IEFServices;
+@using System.Text.Json;
+@using System.Net.Http.Formatting;
+@using Newtonsoft.Json;
+@using AutoDetailsFirmaBLL.Validation;
+@using FluentValidation.Results;
+@page "/api/Provide"
+@page "/api/Provide/{id}"
+@using Microsoft.AspNetCore.Components;
+@inject IEFProvideService provideService;
+
+
+<h1>Поставки</h1>
+
+
+<hr />
+<style>
+    ul.nav {
+        margin-left: 0px;
+        padding-left: 0px;
+        list-style: none;
+    }
+
+    .nav li {
+        display: inline;
+    }
+
+    ul.nav a {
+        display: inline-block;
+        width: 10em;
+        padding: 10px;
+        background-color: #f4f4f4;
+        border: 1px dashed #333;
+        text-decoration: none;
+        color: #333;
+        text-align: center;
+    }
+
+        ul.nav a:hover {
+            background-color: #333;
+            color: #f4f4f4;
+        }
+        ul.nav a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+</style>
+<style>
+    table {
+        width: 25%;
+        background: white;
+        color: white;
+        border-spacing: 1px;
+    }
+
+    td, th {
+        background: maroon;
+        padding: 10px;
+    }
+</style>
+@if (provideList.Any())
+{
+<ul class="nav">
+    <li><a href="https://localhost:44367/api/Provider">Постачальник</a></li>
+    <li><a href="https://localhost:44367/api/GroupOfDetail">Група деталі</a></li>
+    <li><a href="https://localhost:44367/api/Detail">Деталі</a></li>
+    <li><a class ="active" href="https://localhost:44367/api/Provide">Поставки</a></li>
+    <li><a href="https://localhost:44367/api/Shop">Магазин</a></li>
+</ul>
+
+    <table align="center">
+        <tr> <th>ID</th> <th>Id Постачальника</th> <th>Id Деталі</th> <th>Ціна Поставки</th><th>Дата Поставки</th> <th>Артикул Поставки</th></tr>
+
+
+
+        @foreach (var provide in provideList)
+        {
+
+
+
+            <tr><td>@provide.Id</td><td>@provide.IdOFProvider</td><td>@provide.IdOfDetail</td><td>@provide.PriceOfProvide</td><td>@provide.DataOfProvide</td> <td>@provide.ArticleOfProvide</td><td> <button> <a class="btn btn-danger btn-sm" @onclick="@(() => DeteleProvide(provide.Id))">Delete</a> </button> </td></tr>
+
+
+
+        }
+    </table>
+
+
+    <br />
+
+}
+else
+{
+    <p>No Contacts Found</p>
+}
+
+<div class="modal-body">
+    <EditForm Model="@provideDTO" OnValidSubmit="@HandleValidSubmit">
+
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <form>
+
+            <label>Id Постачальника: </label>
+            <InputNumber class="form-control" @bind-Value="@provideDTO.IdOFProvider" /> <br><br>
+
+            <label>Id Деталі:</label>
+            <InputNumber class="form-control" @bind-Value="@provideDTO.IdOfDetail" /> <br><br>
+
+            <label>Ціна Поставки: </label>
+            <InputNumber class="form-control" @bind-Value="@provideDTO.PriceOfProvide" /><br><br>
+
+            <label>Дата Поставки: </label>
+            <InputDate class="form-control" @bind-Value="@provideDTO.DataOfProvide" /><br><br>
+
+            <label>Артикул Поставки: </label>
+            <InputText class="form-control" @bind-Value="@provideDTO.ArticleOfProvide" /><br>
+
+        </form>
+
+
+        <button type="submit" class="btn btn-primary" onClick="window.location.href=window.location.href">Submit</button>
+
+    </EditForm>
+</div>
+
+
+
+
+
+
+
+@code {
+
+    
+    @functions {
+        private List<AutoDetailsFirmaDAL.Entities.Provide> provideList = new List<AutoDetailsFirmaDAL.Entities.Provide>();
+
+        protected override async Task OnInitializedAsync() => await GetProvide();
+
+        HttpClient httpClient = new HttpClient();
+
+
+        private async Task GetProvide() => provideList = await httpClient.GetJsonAsync<List<AutoDetailsFirmaDAL.Entities.Provide>>("https://localhost:44367/api/Provide/paged");
+
+        private async void DeteleProvide(int id)
+        {
+            string baseUrl = "https://localhost:44367";
+            string endpoint = $"{baseUrl}/api/Provide/{id}";
+
+            await httpClient.DeleteAsync(endpoint);
+        }
+
+        ProvideDTO provideDTO { get; set; } = new ProvideDTO();
+
+
+        private async void HandleValidSubmit()
+        {
+
+            try
+            {
+                await provideService.AddProvides(provideDTO);
+            }
+            catch
+            {
+
+            }
+        }
+
+
+    }
+}

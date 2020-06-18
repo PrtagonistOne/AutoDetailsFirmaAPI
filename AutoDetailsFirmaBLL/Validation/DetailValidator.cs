@@ -1,8 +1,9 @@
-﻿using AutoDetailsFirmaDAL.Entities;
+﻿using AutoDetailsFirmaBLL.DTO;
+using AutoDetailsFirmaDAL.Entities;
 using FluentValidation;
 namespace AutoDetailsFirmaBLL.Validation
 {
-    public class DetailValidator : AbstractValidator<Detail>
+    public class DetailValidator : AbstractValidator<DetailDTO>
     {
         public DetailValidator()
         {

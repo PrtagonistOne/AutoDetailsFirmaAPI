@@ -18,9 +18,15 @@ namespace AutoDetailsFirmaAPI.Controllers
         {
             _iEFShopService = eFShopService;
         }
-
-        //GET
         [HttpGet]
+        public IActionResult GetShopView()
+        {
+
+            return View();
+
+        }
+        //GET
+        [HttpGet("paged")]
         public async Task<IActionResult> Get()
         {
             try

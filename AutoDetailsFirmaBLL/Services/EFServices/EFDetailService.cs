@@ -37,12 +37,11 @@ namespace AutoDetailsFirmaBLL.Services.EFServices
         }
         public async Task<string> AddDetails(DetailDTO detail)
         {
+            DetailValidator validator = new DetailValidator();
+            ValidationResult results = validator.Validate(detail);
 
             var x = _mapper.Map<DetailDTO, Detail>(detail);
 
-            DetailValidator validator = new DetailValidator();
-
-            ValidationResult results = validator.Validate(x);
             if (!results.IsValid)
             {
                 foreach (var failure in results.Errors)

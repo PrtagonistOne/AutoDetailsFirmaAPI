@@ -22,9 +22,15 @@ namespace AutoDetailsFirmaAPI.Controllers
         {
             _iEFGroupOfDetailService = iEFGroupOfDetailService;
         }
-
-        //GET
         [HttpGet]
+        public IActionResult GetGroupView()
+        {
+            
+            return View();
+            
+        }
+        //GET
+        [HttpGet("paged")]
         public async Task<IActionResult> Get([FromQuery]GroupOfDetailParameters parameters)
         {
             

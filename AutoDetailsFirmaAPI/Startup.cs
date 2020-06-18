@@ -58,7 +58,7 @@ namespace AutoDetailsFirmaAPI
             services.AddValidatorsFromAssemblyContaining<ShopValidator>();
             services.AddValidatorsFromAssemblyContaining<RoleValidator>();
 
-            services.AddMvc();
+      
             //Identity Constraints
             services.AddIdentity<User, Role>(options =>
             {

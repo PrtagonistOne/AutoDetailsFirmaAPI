@@ -18,9 +18,15 @@ namespace AutoDetailsFirmaAPI.Controllers
         {
             _iEFProviderService = iEFProviderService;
         }
-
-        //GET
         [HttpGet]
+        public IActionResult GetProviderView()
+        {
+
+            return View();
+
+        }
+        //GET
+        [HttpGet("paged")]
         public async Task<IActionResult> Get()
         {
             try
@@ -32,6 +38,7 @@ namespace AutoDetailsFirmaAPI.Controllers
                 return StatusCode(404);
             }
         }
+
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
